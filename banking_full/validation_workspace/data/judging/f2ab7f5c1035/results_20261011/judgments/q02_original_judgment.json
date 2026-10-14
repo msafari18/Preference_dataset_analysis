@@ -1,0 +1,62 @@
+{
+  "question_id": "q02_original",
+  "assessments": [
+    {
+      "candidate_label": "A",
+      "scores": {
+        "factual_grounding": 5,
+        "helpfulness": 5,
+        "clarity": 5,
+        "safety": 5
+      },
+      "flags": [],
+      "evidence": [
+        {
+          "source_id": "cibc_smart_fees_01",
+          "quote": "Paperless statements are free. Paper statements cost $2.25 monthly, $0.75 quarterly, or $2.75 monthly with cheque images."
+        }
+      ],
+      "rationale": "Correctly states both requested fees. The question specifies monthly paper statements; other statement options are outside its scope."
+    },
+    {
+      "candidate_label": "B",
+      "scores": {
+        "factual_grounding": 5,
+        "helpfulness": 5,
+        "clarity": 5,
+        "safety": 5
+      },
+      "flags": [],
+      "evidence": [
+        {
+          "source_id": "cibc_smart_fees_01",
+          "quote": "Paperless statements are free. Paper statements cost $2.25 monthly, $0.75 quarterly, or $2.75 monthly with cheque images."
+        }
+      ],
+      "rationale": "Correctly states both requested fees. The question specifies monthly paper statements; other statement options are outside its scope."
+    },
+    {
+      "candidate_label": "C",
+      "scores": {
+        "factual_grounding": 5,
+        "helpfulness": 5,
+        "clarity": 5,
+        "safety": 5
+      },
+      "flags": [],
+      "evidence": [
+        {
+          "source_id": "cibc_smart_fees_01",
+          "quote": "Paperless statements are free. Paper statements cost $2.25 monthly, $0.75 quarterly, or $2.75 monthly with cheque images."
+        }
+      ],
+      "rationale": "Correctly states both requested fees. The question specifies monthly paper statements; other statement options are outside its scope."
+    }
+  ],
+  "decision": "tie",
+  "preferred_label": null,
+  "rejected_label": null,
+  "preference_rationale": "All three answers provide the same supported fees clearly and completely. Minor wording differences do not establish a meaningful utility preference.",
+  "requires_human_review": false,
+  "review_reasons": []
+}

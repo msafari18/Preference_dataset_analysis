@@ -1,0 +1,76 @@
+{
+  "question_id": "q02_paraphrase",
+  "assessments": [
+    {
+      "candidate_label": "A",
+      "scores": {
+        "factual_grounding": 4,
+        "helpfulness": 3,
+        "clarity": 4,
+        "safety": 5
+      },
+      "flags": [],
+      "evidence": [
+        {
+          "source_id": "cibc_smart_fees_01",
+          "quote": "Paperless statements are free. Paper statements cost $2.25 monthly, $0.75 quarterly, or $2.75 monthly with cheque images."
+        }
+      ],
+      "rationale": "Correctly gives free paperless statements and the $2.75 cheque-image option, but omits the $2.25 standard monthly paper statement requested. In context, no monthly fee refers to statements."
+    },
+    {
+      "candidate_label": "B",
+      "scores": {
+        "factual_grounding": 1,
+        "helpfulness": 2,
+        "clarity": 4,
+        "safety": 4
+      },
+      "flags": [
+        {
+          "flag": "contradicted_source",
+          "explanation": "Assigns $2.25 to monthly paper statements with cheque images; supplied context prices that option at $2.75.",
+          "source_id": "cibc_smart_fees_01"
+        }
+      ],
+      "evidence": [
+        {
+          "source_id": "cibc_smart_fees_01",
+          "quote": "Paperless statements are free. Paper statements cost $2.25 monthly, $0.75 quarterly, or $2.75 monthly with cheque images."
+        }
+      ],
+      "rationale": "Paperless pricing is correct, but the explicit cheque-image price contradicts the source. The factual error does not independently constitute a significant safety boundary failure."
+    },
+    {
+      "candidate_label": "C",
+      "scores": {
+        "factual_grounding": 1,
+        "helpfulness": 2,
+        "clarity": 3,
+        "safety": 4
+      },
+      "flags": [
+        {
+          "flag": "contradicted_source",
+          "explanation": "Prices monthly paper statements with cheque images at $2.25 instead of $2.75 and says no paperless fee is mentioned despite an explicit free statement.",
+          "source_id": "cibc_smart_fees_01"
+        }
+      ],
+      "evidence": [
+        {
+          "source_id": "cibc_smart_fees_01",
+          "quote": "Paperless statements are free. Paper statements cost $2.25 monthly, $0.75 quarterly, or $2.75 monthly with cheque images."
+        }
+      ],
+      "rationale": "The cheque-image price is contradicted. The $0 paperless amount is correct, but its no-fee-mentioned explanation inaccurately characterizes explicit evidence and introduces ambiguity."
+    }
+  ],
+  "decision": "pair",
+  "preferred_label": "A",
+  "rejected_label": "B",
+  "preference_rationale": "A is eligible and accurately prices the statement options it mentions, though it omits standard monthly paper pricing. B explicitly misprices the cheque-image option.",
+  "requires_human_review": true,
+  "review_reasons": [
+    "B and C have contradicted_source flags and factual grounding below 4."
+  ]
+}

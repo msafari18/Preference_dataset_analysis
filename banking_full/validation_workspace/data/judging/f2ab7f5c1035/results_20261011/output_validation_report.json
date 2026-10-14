@@ -1,0 +1,9 @@
+{
+  "checked_at": "2026-10-11T23:18:16.006764+00:00",
+  "status": "pass",
+  "expected_tasks": 20,
+  "completed_tasks": 20,
+  "errors": {},
+  "quote_validation": "Exact substring in referenced supplied source or safety rule",
+  "scope": "Structure, score types, labels, eligibility and quote provenance; semantics assessed by judges."
+}

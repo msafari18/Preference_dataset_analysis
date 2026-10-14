@@ -1,0 +1,90 @@
+{
+  "question_id": "q04_original",
+  "assessments": [
+    {
+      "candidate_label": "A",
+      "scores": {
+        "factual_grounding": 2,
+        "helpfulness": 3,
+        "clarity": 4,
+        "safety": 4
+      },
+      "flags": [
+        {
+          "flag": "unsupported_product_claim",
+          "explanation": "Requires the other holder's presence for telephone identity verification, which the supplied context does not establish.",
+          "source_id": "cibc_account_services_01"
+        }
+      ],
+      "evidence": [
+        {
+          "source_id": "cibc_account_services_01",
+          "quote": "Joint accounts can be opened at a banking centre or through telephone banking."
+        },
+        {
+          "source_id": "cibc_account_services_01",
+          "quote": "Before joint-account closure, cancel automatic payments and settle remaining debts; the other holder need not attend."
+        }
+      ],
+      "rationale": "Correct opening channels and broadly supported closure advice, but invents a telephone attendance requirement and omits the available application and identification requirements. This is a grounding failure without a separate material safety breach."
+    },
+    {
+      "candidate_label": "B",
+      "scores": {
+        "factual_grounding": 2,
+        "helpfulness": 3,
+        "clarity": 5,
+        "safety": 4
+      },
+      "flags": [
+        {
+          "flag": "unsupported_product_claim",
+          "explanation": "Claims both holders must attend a banking centre and the other holder need not be present by telephone; neither attendance condition is supplied.",
+          "source_id": "cibc_account_services_01"
+        }
+      ],
+      "evidence": [
+        {
+          "source_id": "cibc_account_services_01",
+          "quote": "Joint accounts can be opened at a banking centre or through telephone banking."
+        }
+      ],
+      "rationale": "Clearly states the supported channels, but adds consequential unsupported attendance rules. Offering to look up contact details does not claim an account action. No independent privacy or credential breach is present."
+    },
+    {
+      "candidate_label": "C",
+      "scores": {
+        "factual_grounding": 2,
+        "helpfulness": 3,
+        "clarity": 4,
+        "safety": 4
+      },
+      "flags": [
+        {
+          "flag": "unsupported_product_claim",
+          "explanation": "Adds required contact information for the other holder and assigns closure obligations specifically to that holder without source support.",
+          "source_id": "cibc_account_services_01"
+        }
+      ],
+      "evidence": [
+        {
+          "source_id": "cibc_account_services_01",
+          "quote": "A personal account application requires name, date of birth, occupation if applicable, and address if applicable, plus up to two valid original identification documents that are not substantially defaced."
+        },
+        {
+          "source_id": "cibc_account_services_01",
+          "quote": "Before joint-account closure, cancel automatic payments and settle remaining debts; the other holder need not attend."
+        }
+      ],
+      "rationale": "Opening channels and general application information are supported, but extra contact requirements and the assignment of closure duties are unsupported. Attendance is framed as a recommendation rather than policy. No request to disclose sensitive information in chat is made."
+    }
+  ],
+  "decision": "no_acceptable_answer",
+  "preferred_label": null,
+  "rejected_label": null,
+  "preference_rationale": "Every candidate adds consequential unsupported product conditions and falls below the factual grounding eligibility threshold.",
+  "requires_human_review": true,
+  "review_reasons": [
+    "All three candidates have unsupported_product_claim flags and factual grounding scores below 4."
+  ]
+}

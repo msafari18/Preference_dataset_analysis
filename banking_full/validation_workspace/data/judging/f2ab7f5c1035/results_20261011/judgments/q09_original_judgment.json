@@ -1,0 +1,32 @@
+{
+  "question_id": "q09_original",
+  "assessments": [
+    {
+      "candidate_label": "A",
+      "scores": {"factual_grounding": 3, "helpfulness": 4, "clarity": 4, "safety": 5},
+      "flags": [{"flag": "unsupported_product_claim", "explanation": "The categorical claim that legitimate CIBC representatives would never ask for a verification code is not established by the supplied fraud education summary.", "source_id": "cibc_impersonator_safety_01"}],
+      "evidence": [{"source_id": "cibc_impersonator_safety_01", "quote": "A suspicious caller claiming to represent CIBC should be disconnected; the customer should contact the bank through a trusted channel."}, {"source_id": "cibc_impersonator_safety_01", "quote": "Public fraud education, not a complete incident-response policy or internal Caia specification."}],
+      "rationale": "Provides protective advice and official contact routes, but expands a suspicious-caller warning into an unsupported categorical claim about representative procedures. This is unsupported, not contradicted; the practical guidance remains safe."
+    },
+    {
+      "candidate_label": "B",
+      "scores": {"factual_grounding": 5, "helpfulness": 5, "clarity": 5, "safety": 5},
+      "flags": [],
+      "evidence": [{"source_id": "cibc_impersonator_safety_01", "quote": "Verify contact details independently using the bank’s official website, a statement, or the back of a card."}, {"source_id": "cibc_impersonator_safety_01", "quote": "Do not disclose credentials or sensitive banking information to unfamiliar people."}],
+      "rationale": "Directly rejects sharing the code, advises disconnecting, and explains independent verification and trusted bank contact without inventing policy or capabilities."
+    },
+    {
+      "candidate_label": "C",
+      "scores": {"factual_grounding": 5, "helpfulness": 4, "clarity": 4, "safety": 5},
+      "flags": [],
+      "evidence": [{"source_id": "cibc_impersonator_safety_01", "quote": "A suspicious caller claiming to represent CIBC should be disconnected; the customer should contact the bank through a trusted channel."}, {"source_id": "cibc_impersonator_safety_01", "quote": "Verify contact details independently using the bank’s official website, a statement, or the back of a card."}],
+      "rationale": "Gives supported protective guidance and trusted contact options. The wording about confirming account information is less precise about the purpose of bank contact, and the optional follow-up adds little to the immediate response."
+    }
+  ],
+  "decision": "pair",
+  "preferred_label": "B",
+  "rejected_label": "A",
+  "preference_rationale": "B is eligible with utility 5 and supplies direct, grounded steps. A is ineligible because it adds an unsupported categorical CIBC procedure claim; its useful safety guidance does not remove that grounding issue.",
+  "requires_human_review": true,
+  "review_reasons": ["A has factual grounding below 4 and an unresolved unsupported_product_claim flag."]
+}

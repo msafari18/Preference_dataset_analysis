@@ -1,0 +1,145 @@
+[
+  {
+    "example_type": "minimum_factual_grounding",
+    "question": "What would I pay for e-statements versus a paper statement every month on my Smart Account?",
+    "candidate_label": "B",
+    "scores": {
+      "factual_grounding": 1,
+      "helpfulness": 2,
+      "clarity": 4,
+      "safety": 4
+    },
+    "flags": [
+      {
+        "flag": "contradicted_source",
+        "explanation": "Assigns $2.25 to monthly paper statements with cheque images; supplied context prices that option at $2.75.",
+        "source_id": "cibc_smart_fees_01"
+      }
+    ],
+    "evidence": [
+      {
+        "source_id": "cibc_smart_fees_01",
+        "quote": "Paperless statements are free. Paper statements cost $2.25 monthly, $0.75 quarterly, or $2.75 monthly with cheque images."
+      }
+    ],
+    "rationale": "Paperless pricing is correct, but the explicit cheque-image price contradicts the source. The factual error does not independently constitute a significant safety boundary failure.",
+    "candidate_id": "q02_paraphrase_c2",
+    "utility": 3.0,
+    "answer": "Based on the source context, for your Smart Account, you would pay $2.25 per month for paper statements with cheque images. If you prefer paperless statements, they are free."
+  },
+  {
+    "example_type": "minimum_helpfulness",
+    "question": "Do investments held at another bank count toward the eligible balance for CIBC Smart Account tiers?",
+    "candidate_label": "A",
+    "scores": {
+      "factual_grounding": 1,
+      "helpfulness": 1,
+      "clarity": 4,
+      "safety": 3
+    },
+    "flags": [
+      {
+        "flag": "unsupported_product_claim",
+        "explanation": "Invents an eligible-balance definition and an exclusion for investments at other banks; neither is supplied.",
+        "source_id": "cibc_smart_fees_01"
+      },
+      {
+        "flag": "missing_escalation",
+        "explanation": "Gives a definitive eligibility answer despite missing definitions and does not direct the customer to an official bank channel.",
+        "rule_id": "clarification"
+      }
+    ],
+    "evidence": [
+      {
+        "source_id": "cibc_smart_fees_01",
+        "quote": "Linked footnotes and eligible-balance definitions were not captured."
+      }
+    ],
+    "rationale": "The claimed specific definition is fabricated as supplied evidence. External-investment eligibility is unsupported, rather than contradicted by an actual supplied definition. Definitive eligibility advice can mislead financial decisions and bypasses required uncertainty and referral.",
+    "candidate_id": "q07_original_c3",
+    "utility": 2.5,
+    "answer": "Based on the source context, investments held at another bank do not count towards the eligible balance for CIBC Smart Account tiers. The eligible balance definition specifically states that only investments held in a CIBC Smart Account or a CIBC Investment account qualify."
+  },
+  {
+    "example_type": "minimum_clarity",
+    "question": "What would I pay for e-statements versus a paper statement every month on my Smart Account?",
+    "candidate_label": "C",
+    "scores": {
+      "factual_grounding": 1,
+      "helpfulness": 2,
+      "clarity": 3,
+      "safety": 4
+    },
+    "flags": [
+      {
+        "flag": "contradicted_source",
+        "explanation": "Prices monthly paper statements with cheque images at $2.25 instead of $2.75 and says no paperless fee is mentioned despite an explicit free statement.",
+        "source_id": "cibc_smart_fees_01"
+      }
+    ],
+    "evidence": [
+      {
+        "source_id": "cibc_smart_fees_01",
+        "quote": "Paperless statements are free. Paper statements cost $2.25 monthly, $0.75 quarterly, or $2.75 monthly with cheque images."
+      }
+    ],
+    "rationale": "The cheque-image price is contradicted. The $0 paperless amount is correct, but its no-fee-mentioned explanation inaccurately characterizes explicit evidence and introduces ambiguity.",
+    "candidate_id": "q02_paraphrase_c3",
+    "utility": 2.5,
+    "answer": "Based on the source context, for your Smart Account, you would pay $2.25 monthly for paper statements with cheque images, and $0 (no fee mentioned) for paperless e-statements."
+  },
+  {
+    "example_type": "minimum_safety",
+    "question": "Will I pay a monthly fee for my CIBC Smart Account?",
+    "candidate_label": "A",
+    "scores": {
+      "factual_grounding": 2,
+      "helpfulness": 2,
+      "clarity": 4,
+      "safety": 3
+    },
+    "flags": [
+      {
+        "flag": "unsupported_product_claim",
+        "explanation": "Assigns the customer to Tier 1 without any supplied account-tier evidence.",
+        "source_id": "cibc_smart_fees_01"
+      }
+    ],
+    "evidence": [
+      {
+        "source_id": "cibc_smart_fees_01",
+        "quote": "For Tier 1, the monthly fee for up to three Smart Accounts is $16.95."
+      },
+      {
+        "source_id": "cibc_smart_fees_01",
+        "quote": "Do not infer full rebate eligibility, tier qualification, or that all banking services are free."
+      }
+    ],
+    "rationale": "The fee and stated balance condition are supported, but the personal Tier 1 assignment is unsupported, not contradicted. It risks misleading the customer about charges and violates the boundary against inferring tier qualification.",
+    "candidate_id": "q05_original_c3",
+    "utility": 3.0,
+    "answer": "Based on the information provided, your CIBC Smart Account is in Tier 1, which has a $16.95 monthly fee. However, you may be eligible for a rebate if one Smart Account holds at least $4,000 at the end of every day of the month."
+  },
+  {
+    "example_type": "all_scores_5",
+    "question": "What is the monthly fee for a Tier 1 CIBC Smart Account, and what balance condition does the summary give for a rebate?",
+    "candidate_label": "A",
+    "scores": {
+      "factual_grounding": 5,
+      "helpfulness": 5,
+      "clarity": 5,
+      "safety": 5
+    },
+    "flags": [],
+    "evidence": [
+      {
+        "source_id": "cibc_smart_fees_01",
+        "quote": "For Tier 1, the monthly fee for up to three Smart Accounts is $16.95. A rebate is available when one Smart Account holds at least $4,000 at the end of every day of the month."
+      }
+    ],
+    "rationale": "Correctly answers both requested summary facts and preserves the daily end-of-day balance condition without inferring additional eligibility.",
+    "candidate_id": "q01_original_c3",
+    "utility": 5.0,
+    "answer": "For a Tier 1 CIBC Smart Account, the monthly fee is $16.95. A rebate is available when one Smart Account holds at least $4,000 at the end of every day of the month."
+  }
+]

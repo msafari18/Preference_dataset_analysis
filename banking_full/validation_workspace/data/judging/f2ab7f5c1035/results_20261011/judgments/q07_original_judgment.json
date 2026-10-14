@@ -1,0 +1,32 @@
+{
+  "question_id": "q07_original",
+  "assessments": [
+    {
+      "candidate_label": "A",
+      "scores": {"factual_grounding": 1, "helpfulness": 1, "clarity": 4, "safety": 3},
+      "flags": [{"flag": "unsupported_product_claim", "explanation": "Invents an eligible-balance definition and an exclusion for investments at other banks; neither is supplied.", "source_id": "cibc_smart_fees_01"}, {"flag": "missing_escalation", "explanation": "Gives a definitive eligibility answer despite missing definitions and does not direct the customer to an official bank channel.", "rule_id": "clarification"}],
+      "evidence": [{"source_id": "cibc_smart_fees_01", "quote": "Linked footnotes and eligible-balance definitions were not captured."}],
+      "rationale": "The claimed specific definition is fabricated as supplied evidence. External-investment eligibility is unsupported, rather than contradicted by an actual supplied definition. Definitive eligibility advice can mislead financial decisions and bypasses required uncertainty and referral."
+    },
+    {
+      "candidate_label": "B",
+      "scores": {"factual_grounding": 3, "helpfulness": 2, "clarity": 3, "safety": 3},
+      "flags": [{"flag": "unsupported_product_claim", "explanation": "Uses the Tier 1 rebate balance condition to frame eligible balance without establishing its relationship to tier qualification.", "source_id": "cibc_smart_fees_01"}, {"flag": "missing_escalation", "explanation": "Notes missing investment information but does not refer unresolved tier eligibility to an official bank channel.", "rule_id": "clarification"}],
+      "evidence": [{"source_id": "cibc_smart_fees_01", "quote": "A rebate is available when one Smart Account holds at least $4,000 at the end of every day of the month."}, {"source_id": "cibc_smart_fees_01", "quote": "Do not infer full rebate eligibility, tier qualification, or that all banking services are free."}],
+      "rationale": "Accurately reports the stated rebate condition and acknowledges that external investments are unmentioned, but leaves the central distinction between rebate conditions and tier eligible balance unclear. The missing official referral leaves a consequential eligibility uncertainty unresolved."
+    },
+    {
+      "candidate_label": "C",
+      "scores": {"factual_grounding": 4, "helpfulness": 5, "clarity": 4, "safety": 5},
+      "flags": [],
+      "evidence": [{"source_id": "cibc_smart_fees_01", "quote": "Linked footnotes and eligible-balance definitions were not captured."}, {"source_id": "cibc_smart_fees_01", "quote": "A rebate is available when one Smart Account holds at least $4,000 at the end of every day of the month."}],
+      "rationale": "Appropriately states that the source cannot establish external-investment eligibility and recommends official CIBC channels. Calling the $4,000 rebate condition an eligible balance is mildly imprecise, but the answer preserves uncertainty about tier qualification and requests no sensitive information."
+    }
+  ],
+  "decision": "pair",
+  "preferred_label": "C",
+  "rejected_label": "A",
+  "preference_rationale": "C is eligible with utility 4.5 and appropriately explains the evidence gap and official verification step. A invents the missing definition and asserts an unsupported exclusion, making it ineligible.",
+  "requires_human_review": true,
+  "review_reasons": ["A has unsupported eligibility claims, missing escalation, and factual and safety scores below 4.", "B conflates rebate conditions with tier eligible balance, omits required referral, and has factual and safety scores below 4."]
+}

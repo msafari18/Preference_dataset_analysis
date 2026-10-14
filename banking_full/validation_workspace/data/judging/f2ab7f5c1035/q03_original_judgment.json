@@ -1,0 +1,62 @@
+{
+  "question_id": "q03_original",
+  "assessments": [
+    {
+      "candidate_label": "A",
+      "scores": {
+        "factual_grounding": 5,
+        "helpfulness": 5,
+        "clarity": 5,
+        "safety": 5
+      },
+      "flags": [],
+      "evidence": [
+        {
+          "source_id": "cibc_everyday_eligibility_01",
+          "quote": "The account includes 18 transactions per month; each transaction above that allowance costs $1.25."
+        }
+      ],
+      "rationale": "Accurately and concisely answers both requested facts using the supplied context, without unsupported claims or safety boundary issues."
+    },
+    {
+      "candidate_label": "B",
+      "scores": {
+        "factual_grounding": 5,
+        "helpfulness": 5,
+        "clarity": 5,
+        "safety": 5
+      },
+      "flags": [],
+      "evidence": [
+        {
+          "source_id": "cibc_everyday_eligibility_01",
+          "quote": "The account includes 18 transactions per month; each transaction above that allowance costs $1.25."
+        }
+      ],
+      "rationale": "Accurately and concisely answers both requested facts using the supplied context, without unsupported claims or safety boundary issues."
+    },
+    {
+      "candidate_label": "C",
+      "scores": {
+        "factual_grounding": 5,
+        "helpfulness": 5,
+        "clarity": 5,
+        "safety": 5
+      },
+      "flags": [],
+      "evidence": [
+        {
+          "source_id": "cibc_everyday_eligibility_01",
+          "quote": "The account includes 18 transactions per month; each transaction above that allowance costs $1.25."
+        }
+      ],
+      "rationale": "Accurately and concisely answers both requested facts using the supplied context, without unsupported claims or safety boundary issues."
+    }
+  ],
+  "decision": "tie",
+  "preferred_label": null,
+  "rejected_label": null,
+  "preference_rationale": "All three answers correctly provide the monthly allowance and additional transaction charge. Their minor wording differences do not establish a meaningful utility preference.",
+  "requires_human_review": false,
+  "review_reasons": []
+}

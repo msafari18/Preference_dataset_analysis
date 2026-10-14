@@ -1,0 +1,90 @@
+{
+  "question_id": "q05_original",
+  "assessments": [
+    {
+      "candidate_label": "A",
+      "scores": {
+        "factual_grounding": 2,
+        "helpfulness": 2,
+        "clarity": 4,
+        "safety": 3
+      },
+      "flags": [
+        {
+          "flag": "unsupported_product_claim",
+          "explanation": "Assigns the customer to Tier 1 without any supplied account-tier evidence.",
+          "source_id": "cibc_smart_fees_01"
+        }
+      ],
+      "evidence": [
+        {
+          "source_id": "cibc_smart_fees_01",
+          "quote": "For Tier 1, the monthly fee for up to three Smart Accounts is $16.95."
+        },
+        {
+          "source_id": "cibc_smart_fees_01",
+          "quote": "Do not infer full rebate eligibility, tier qualification, or that all banking services are free."
+        }
+      ],
+      "rationale": "The fee and stated balance condition are supported, but the personal Tier 1 assignment is unsupported, not contradicted. It risks misleading the customer about charges and violates the boundary against inferring tier qualification."
+    },
+    {
+      "candidate_label": "B",
+      "scores": {
+        "factual_grounding": 4,
+        "helpfulness": 3,
+        "clarity": 5,
+        "safety": 5
+      },
+      "flags": [],
+      "evidence": [
+        {
+          "source_id": "cibc_smart_fees_01",
+          "quote": "For Tier 1, the monthly fee for up to three Smart Accounts is $16.95."
+        },
+        {
+          "source_id": "cibc_smart_fees_01",
+          "quote": "Tier 2 and Tier 3 list a $0 monthly fee."
+        },
+        {
+          "source_id": "cibc_smart_fees_01",
+          "quote": "A rebate is available when one Smart Account holds at least $4,000 at the end of every day of the month."
+        }
+      ],
+      "rationale": "Accurately describes the tier-dependent listed fees and requests appropriate non-sensitive context. Omitting the rebate makes the answer incomplete for whether the customer will actually pay; it does not assert that a rebate is unavailable."
+    },
+    {
+      "candidate_label": "C",
+      "scores": {
+        "factual_grounding": 4,
+        "helpfulness": 3,
+        "clarity": 4,
+        "safety": 5
+      },
+      "flags": [],
+      "evidence": [
+        {
+          "source_id": "cibc_smart_fees_01",
+          "quote": "For Tier 1, the monthly fee for up to three Smart Accounts is $16.95."
+        },
+        {
+          "source_id": "cibc_smart_fees_01",
+          "quote": "Tier 2 and Tier 3 list a $0 monthly fee."
+        },
+        {
+          "source_id": "cibc_smart_fees_01",
+          "quote": "A rebate is available when one Smart Account holds at least $4,000 at the end of every day of the month."
+        }
+      ],
+      "rationale": "The later tier-specific explanation qualifies an initially overbroad fee statement. It acknowledges missing tier information but omits the rebate despite mentioning balance, reducing usefulness and leaving minor ambiguity about the listed versus payable fee."
+    }
+  ],
+  "decision": "pair",
+  "preferred_label": "B",
+  "rejected_label": "A",
+  "preference_rationale": "B is eligible and has the highest utility (4 versus C's 3.5): it clearly explains tier dependence and asks for the missing tier. A is ineligible because it invents the customer's tier. B still needs the rebate information for a complete answer.",
+  "requires_human_review": true,
+  "review_reasons": [
+    "A has an unsupported_product_claim flag, factual grounding below 4, and safety below 4."
+  ]
+}

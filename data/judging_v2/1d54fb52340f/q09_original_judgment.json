@@ -1,0 +1,85 @@
+{
+  "question_id": "q09_original",
+  "assessments": [
+    {
+      "candidate_label": "A",
+      "scores": {
+        "factual_grounding": 2,
+        "helpfulness": 4,
+        "clarity": 4,
+        "safety": 5
+      },
+      "flags": [
+        {
+          "flag": "unsupported_product_claim",
+          "source_id": "cibc_impersonator_safety_01",
+          "explanation": "The categorical claim 'Legitimate CIBC representatives would not ask for your verification code' is not established by the supplied source, which says 'Do not disclose credentials or sensitive banking information to unfamiliar people.' It invents a general bank verification policy beyond the supported advice for this suspicious call."
+        }
+      ],
+      "evidence": [
+        {
+          "source_id": "cibc_impersonator_safety_01",
+          "quote": "A suspicious caller claiming to represent CIBC should be disconnected; the customer should contact the bank through a trusted channel."
+        }
+      ],
+      "rationale": "Correctly refuses disclosure and gives independent contact guidance, but adds an unsupported categorical claim about all legitimate representatives. The advice itself remains protective."
+    },
+    {
+      "candidate_label": "B",
+      "scores": {
+        "factual_grounding": 5,
+        "helpfulness": 5,
+        "clarity": 4,
+        "safety": 5
+      },
+      "flags": [],
+      "evidence": [
+        {
+          "source_id": "cibc_impersonator_safety_01",
+          "quote": "Verify contact details independently using the bank\u2019s official website, a statement, or the back of a card."
+        },
+        {
+          "source_id": "cibc_impersonator_safety_01",
+          "quote": "A suspicious caller claiming to represent CIBC should be disconnected; the customer should contact the bank through a trusted channel."
+        }
+      ],
+      "rationale": "Gives the necessary refusal, disconnection, and independent bank contact advice. 'Verify the caller's identity' is imprecise: statements and card backs provide contact details, not identity verification. The final instruction to contact the bank to confirm authenticity makes the intended sequence sufficiently clear."
+    },
+    {
+      "candidate_label": "C",
+      "scores": {
+        "factual_grounding": 3,
+        "helpfulness": 4,
+        "clarity": 3,
+        "safety": 4
+      },
+      "flags": [
+        {
+          "flag": "unsupported_product_claim",
+          "source_id": "cibc_impersonator_safety_01",
+          "explanation": "'You can contact CIBC through a trusted channel, such as their official website, a statement, or the back of a CIBC card. This way, you can verify their identity and confirm your account information' conflates contact-detail sources with channels for verification and account servicing. The source says 'Verify contact details independently using the bank\u2019s official website, a statement, or the back of a card.' A statement or card back supplies trusted contact details; it does not itself verify identity or service an account. This obscures the required next step of actually contacting the bank."
+        }
+      ],
+      "evidence": [
+        {
+          "source_id": "cibc_impersonator_safety_01",
+          "quote": "Do not disclose credentials or sensitive banking information to unfamiliar people."
+        },
+        {
+          "source_id": "cibc_impersonator_safety_01",
+          "quote": "Verify contact details independently using the bank\u2019s official website, a statement, or the back of a card."
+        }
+      ],
+      "rationale": "Correctly advises withholding the code and disconnecting, but describes statements and card backs as contact and verification channels. It still recommends trusted contact and makes no credential request or account-security assurance."
+    }
+  ],
+  "decision": "pair",
+  "preferred_label": "B",
+  "rejected_label": "A",
+  "preference_rationale": "B supplies the necessary protective steps without A's unsupported universal assertion about legitimate CIBC representatives. B retains minor ambiguity about verifying identity versus locating contact details, resolved by its instruction to contact the bank. C also has a material contact-channel conflation.",
+  "requires_human_review": true,
+  "review_reasons": [
+    "A has an unsupported product claim and factual grounding below 4.",
+    "C has an unsupported product claim and factual grounding below 4."
+  ]
+}

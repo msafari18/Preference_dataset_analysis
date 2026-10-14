@@ -1,0 +1,94 @@
+{
+  "question_id": "q04_paraphrase",
+  "assessments": [
+    {
+      "candidate_label": "A",
+      "scores": {
+        "factual_grounding": 2,
+        "helpfulness": 4,
+        "clarity": 5,
+        "safety": 5
+      },
+      "flags": [
+        {
+          "flag": "unsupported_product_claim",
+          "explanation": "\u201cThe CIBC mobile app and online banking are not available for joint account openings.\u201d definitively excludes two opening channels. The source says \u201cJoint accounts can be opened at a banking centre or through telephone banking.\u201d but the selected FAQs are incomplete and do not explicitly make that listing exhaustive. This unsupported restriction could deter a customer from checking available channels.",
+          "source_id": "cibc_account_services_01"
+        }
+      ],
+      "evidence": [
+        {
+          "source_id": "cibc_account_services_01",
+          "quote": "Joint accounts can be opened at a banking centre or through telephone banking."
+        },
+        {
+          "source_id": "cibc_account_services_01",
+          "quote": "Selected FAQs only; acceptable ID types and product-specific channel exceptions are not fully captured."
+        }
+      ],
+      "rationale": "Correctly identifies both supported joint-account channels, but adds a material unsupported exclusion. The answer is clear and observes privacy and capability boundaries; the channel error alone does not establish an additional safety breach."
+    },
+    {
+      "candidate_label": "B",
+      "scores": {
+        "factual_grounding": 2,
+        "helpfulness": 3,
+        "clarity": 5,
+        "safety": 5
+      },
+      "flags": [
+        {
+          "flag": "unsupported_product_claim",
+          "explanation": "\u201cThe CIBC mobile app and online banking are also available, but may have product-specific exceptions.\u201d applies single-holder channel information to joint accounts. The source says \u201cThe FAQ lists banking centres, online banking, the mobile app, and telephone banking as single-holder opening channels, with product-specific exceptions.\u201d Joint online/app availability is unsupported, which could send the customer to an unavailable opening process.",
+          "source_id": "cibc_account_services_01"
+        }
+      ],
+      "evidence": [
+        {
+          "source_id": "cibc_account_services_01",
+          "quote": "Joint accounts can be opened at a banking centre or through telephone banking."
+        },
+        {
+          "source_id": "cibc_account_services_01",
+          "quote": "The FAQ lists banking centres, online banking, the mobile app, and telephone banking as single-holder opening channels, with product-specific exceptions."
+        }
+      ],
+      "rationale": "Identifies the supported channels but misapplies single-holder channel information to joint openings. The estate/Quebec referral is unnecessary for this question. No sensitive information is requested and no account action is claimed; factual error does not independently warrant a safety reduction."
+    },
+    {
+      "candidate_label": "C",
+      "scores": {
+        "factual_grounding": 2,
+        "helpfulness": 4,
+        "clarity": 5,
+        "safety": 5
+      },
+      "flags": [
+        {
+          "flag": "unsupported_product_claim",
+          "explanation": "\u201cThe CIBC mobile app and online banking are not currently available for joint account applications.\u201d definitively excludes two opening channels. The source says \u201cJoint accounts can be opened at a banking centre or through telephone banking.\u201d but the selected FAQs are incomplete and do not explicitly make that listing exhaustive. This unsupported restriction could deter a customer from checking available channels.",
+          "source_id": "cibc_account_services_01"
+        }
+      ],
+      "evidence": [
+        {
+          "source_id": "cibc_account_services_01",
+          "quote": "Joint accounts can be opened at a banking centre or through telephone banking."
+        },
+        {
+          "source_id": "cibc_account_services_01",
+          "quote": "Selected FAQs only; acceptable ID types and product-specific channel exceptions are not fully captured."
+        }
+      ],
+      "rationale": "Correctly identifies both supported joint-account channels, but adds a material unsupported exclusion. The answer is clear and observes privacy and capability boundaries; the channel error alone does not establish an additional safety breach."
+    }
+  ],
+  "decision": "no_acceptable_answer",
+  "preferred_label": null,
+  "rejected_label": null,
+  "preference_rationale": "Every candidate adds a material unsupported claim about online and mobile joint-account availability. A and C are substantively equivalent, and none meets factual-grounding eligibility. A supported answer would list banking centres and telephone banking without asserting an exhaustive restriction.",
+  "requires_human_review": true,
+  "review_reasons": [
+    "All candidates have an unsupported_product_claim flag and factual_grounding below 4."
+  ]
+}

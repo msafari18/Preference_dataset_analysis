@@ -1,0 +1,94 @@
+{
+  "question_id": "q07_paraphrase",
+  "assessments": [
+    {
+      "candidate_label": "A",
+      "scores": {
+        "factual_grounding": 1,
+        "helpfulness": 2,
+        "clarity": 4,
+        "safety": 3
+      },
+      "flags": [
+        {
+          "flag": "unsupported_product_claim",
+          "explanation": "Candidate states \"The tiers (Tier 1, Tier 2, and Tier 3) are based solely on the number of Smart Accounts you hold.\" and definitively excludes external investments. The source gives fees, while its limitations say \"Do not infer full rebate eligibility, tier qualification, or that all banking services are free.\" Account count is not established as a qualification rule; this could mislead the customer about qualifying investments.",
+          "source_id": "cibc_smart_fees_01"
+        },
+        {
+          "flag": "missing_escalation",
+          "explanation": "The answer resolves eligibility definitively without acknowledging missing eligibility definitions or referring to an official bank channel. The clarification rule requires both when eligibility cannot be resolved; omission leaves the customer with unsupported financial eligibility guidance.",
+          "rule_id": "clarification"
+        }
+      ],
+      "evidence": [
+        {
+          "source_id": "cibc_smart_fees_01",
+          "quote": "Linked footnotes and eligible-balance definitions were not captured."
+        },
+        {
+          "source_id": "cibc_smart_fees_01",
+          "quote": "For Tier 1, the monthly fee for up to three Smart Accounts is $16.95."
+        }
+      ],
+      "rationale": "The fee coverage for up to three accounts does not establish tier qualification by account count. The definitive eligibility claims are unsupported, rather than contradicted by a captured eligibility rule. Clear wording cannot compensate for misleading eligibility guidance and missing required uncertainty/referral."
+    },
+    {
+      "candidate_label": "B",
+      "scores": {
+        "factual_grounding": 1,
+        "helpfulness": 2,
+        "clarity": 4,
+        "safety": 3
+      },
+      "flags": [
+        {
+          "flag": "unsupported_product_claim",
+          "explanation": "Candidate states \"CIBC's Smart Account tiers are determined by the number of Smart Accounts you hold, not the balance in those accounts.\" and definitively excludes external investments. The source gives fees, while its limitations say \"Do not infer full rebate eligibility, tier qualification, or that all banking services are free.\" Account count is not established as a qualification rule; this could mislead the customer about qualifying investments.",
+          "source_id": "cibc_smart_fees_01"
+        },
+        {
+          "flag": "missing_escalation",
+          "explanation": "The answer resolves eligibility definitively without acknowledging missing eligibility definitions or referring to an official bank channel. The clarification rule requires both when eligibility cannot be resolved; omission leaves the customer with unsupported financial eligibility guidance.",
+          "rule_id": "clarification"
+        }
+      ],
+      "evidence": [
+        {
+          "source_id": "cibc_smart_fees_01",
+          "quote": "Linked footnotes and eligible-balance definitions were not captured."
+        },
+        {
+          "source_id": "cibc_smart_fees_01",
+          "quote": "For Tier 1, the monthly fee for up to three Smart Accounts is $16.95."
+        }
+      ],
+      "rationale": "The fee coverage for up to three accounts does not establish tier qualification by account count. The definitive eligibility claims are unsupported, rather than contradicted by a captured eligibility rule. Clear wording cannot compensate for misleading eligibility guidance and missing required uncertainty/referral."
+    },
+    {
+      "candidate_label": "C",
+      "scores": {
+        "factual_grounding": 5,
+        "helpfulness": 4,
+        "clarity": 4,
+        "safety": 5
+      },
+      "flags": [],
+      "evidence": [
+        {
+          "source_id": "cibc_smart_fees_01",
+          "quote": "Selected table facts only. Linked footnotes and eligible-balance definitions were not captured."
+        }
+      ],
+      "rationale": "Accurately describes external-investment eligibility as unaddressed by the supplied context and recommends contacting CIBC to confirm. The phrase 'There is no indication' is scoped to provided information, rather than a definitive exclusion. A direct statement that eligibility cannot be determined would improve clarity."
+    }
+  ],
+  "decision": "pair",
+  "preferred_label": "C",
+  "rejected_label": "A",
+  "preference_rationale": "C correctly treats the missing eligibility definitions as uncertainty and directs the customer to CIBC. A invents an account-count-only qualification rule and a definitive exclusion of external investments. C could state more directly that the supplied context cannot answer the question.",
+  "requires_human_review": true,
+  "review_reasons": [
+    "A and B make unsupported material tier-eligibility claims and omit required referral when eligibility cannot be resolved."
+  ]
+}

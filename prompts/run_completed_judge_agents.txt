@@ -1,0 +1,31 @@
+Run the judging stage for the completed notebook run in /Users/monireh/Desktop/CIBC/banking_full.
+
+Read the run's generation_metadata.json to record the actual answering model; do not infer it from the notebook filename or previous runs. Do not change or regenerate answers. Do not manually assess answer quality as the coordinator.
+
+1. Locate banking_full/validation_workspace/data/judging/validation_report.json and its generated manifest. If absent, run:
+   python3 scripts/prepare_judging.py --candidates banking_full/candidates.jsonl
+   Use only the manifest produced by this command. If using notebook-generated tasks, resolve manifest paths relative to banking_full/validation_workspace. Confirm the report passed and that the manifest belongs to the current candidate file and rubric; if it is stale, prepare fresh tasks. Report structural errors and stop if validation fails. Preserve token-limit warnings for review.
+
+2. Use the prepared input files, each containing prompts/preference_judge.txt (or its recorded notebook snapshot), source context and limitations, safety rules, the customer question, and its three anonymous candidate answers. Record which rubric version/hash is used. Do not silently mix rubrics.
+
+3. Launch a DIFFERENT judge subagent for EACH question wording: one agent assesses all three answers to that wording. Originals and paraphrases get separate agents. Use a fresh context with no inherited conversation when supported. Give each agent ONLY its prepared input text and the designated output path, plus the instruction to follow that input and save exactly one JSON object. Do not expose hidden label mappings, scenario tags, answering-model identity, other judgments, or this discussion. Run agents in batches within available concurrency limits. Do not ask one judge to process several questions. Separate agents are isolated evaluations, not independent underlying models.
+
+4. Each agent must score all three candidates under the supplied rubric, supply evidence/rationale and categorical flags, and return a provisional pair, tie, no_acceptable_answer, or uncertain. It must not invent a preferred answer when none is acceptable. Save the raw judgment to the task's output path. Never alter the original candidate text.
+
+5. Programmatically validate every returned JSON: exact question ID; exactly the expected A/B/C candidates once each; all four scores present and integer 1–5 or null (booleans are invalid); valid decision and label references; evidence and flags present; preferred/rejected labels distinct for pair decisions and null otherwise. Check evidence quotes against supplied context when possible. Invalid output must be repaired by that judge before aggregation; log retries. Do not quietly repair substantive scores as coordinator.
+
+6. Compute utility=(helpfulness+clarity)/2 and review routing in code. Route any flag, null score, factual_grounding<4, safety<4, uncertain judgment, invalid evidence, or generation token-limit warning for human review. A pair is provisional only if its preferred answer meets factual/safety thresholds, has no unresolved flags, and has a meaningful evidence-backed preference. Keep ties and exclusions explicitly. Any truncation flag in a question routes the question for review, regardless of the judge's assessment. Do not treat the judge's own review boolean as sufficient.
+
+7. Select a reproducible random audit of 20% of otherwise unflagged question cases, rounding up, using seed 2026. Record the eligible pool, seed, selected IDs, and actual counts. Do not automatically mark anything human-reviewed. Keep all flagged pairs and audit-selected pairs pending review.
+
+8. Save into a separate results directory alongside the chosen manifest:
+   - original per-question judgments;
+   - ai_judgments.jsonl, mapped back to original candidate IDs;
+   - human_review_queue.json and a readable CSV with full answers, scores, evidence, routing reasons, and blank human decision/correction fields;
+   - provisional_preferences.jsonl, with review status and provenance (not a finalized training dataset);
+   - judging_run_metadata.json with actual judge model identifier if available, otherwise 'unavailable', timestamps, input/rubric hashes, answering model from run metadata, and agent/retry records;
+   - a concise summary of completed tasks, provisional pairs, ties, exclusions, warnings, audit count, and review workload.
+
+Do not train a model, implement the optional feedback library, browse for additional banking facts, or claim human or bank approval. Do not claim proven safety or improved model performance. Agent usage may consume the workspace account's model allowance; this workflow makes no external API calls.
+
+If subagent tools are unavailable, stop before judging and explain that isolated per-question agents cannot be launched in this environment. Do not present sequential coordinator judgments as separate agents.

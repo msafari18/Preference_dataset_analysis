@@ -1,0 +1,11 @@
+SOURCE COLLECTION — RESEARCH PROTOTYPE
+
+Four official CIBC Canada pages inspected on 2026-10-11. banking_sources.jsonl is the machine-readable corpus; banking_sources.json contains the same records for easy reading. Each record includes the requested source_id, title, url, retrieved_at, and text, plus scope limitations and a hash of the saved summary.
+
+IMPORTANT: text fields are AI-assisted paraphrased summaries, not verbatim extracts or full-page archives. URLs and section names allow comparison with the originals. The text hash identifies the local summary, not an official bank document version. Retrieval date does not establish the effective date of product terms.
+
+The prototype safety guideline is researcher-defined. Public bank pages substitute for hypothetical bank-provided documents; neither these summaries nor the rubric have bank approval. Dynamic footnotes were not captured. Generate questions only within the included facts; missing terms should produce uncertainty or escalation.
+
+Scope: Canadian chequing account facts, basic qualification and account services, and impersonator-scam handling. Excludes lending, investing, estate advice, promotional offers, complete product terms, and authenticated account actions.
+
+No questions, candidate answers, preference labels, or customer records are included yet. Next: generate 10 original questions plus 10 checked paraphrases, retaining source_id and question_family_id.

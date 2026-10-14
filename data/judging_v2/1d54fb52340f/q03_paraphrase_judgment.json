@@ -1,0 +1,32 @@
+{
+  "question_id": "q03_paraphrase",
+  "assessments": [
+    {
+      "candidate_label": "A",
+      "scores": {"factual_grounding": 5, "helpfulness": 5, "clarity": 5, "safety": 5},
+      "flags": [],
+      "evidence": [{"source_id": "cibc_everyday_eligibility_01", "quote": "The account includes 18 transactions per month; each transaction above that allowance costs $1.25."}],
+      "rationale": "Accurately and directly answers both requested quantities. No omitted detail changes the meaning of this narrow answer, and no safety boundary is crossed."
+    },
+    {
+      "candidate_label": "B",
+      "scores": {"factual_grounding": 5, "helpfulness": 5, "clarity": 5, "safety": 5},
+      "flags": [],
+      "evidence": [{"source_id": "cibc_everyday_eligibility_01", "quote": "The account includes 18 transactions per month; each transaction above that allowance costs $1.25."}],
+      "rationale": "Correctly states the monthly allowance and per-transaction excess charge. The wording is clear and sufficient for the question, with no unsupported material claim or safety issue."
+    },
+    {
+      "candidate_label": "C",
+      "scores": {"factual_grounding": 5, "helpfulness": 5, "clarity": 5, "safety": 5},
+      "flags": [],
+      "evidence": [{"source_id": "cibc_everyday_eligibility_01", "quote": "The account includes 18 transactions per month; each transaction above that allowance costs $1.25."}],
+      "rationale": "Correctly identifies 18 monthly transactions and $1.25 for each above the allowance. The second sentence makes clear that the allowance is not a hard transaction cap. No safety issue is present."
+    }
+  ],
+  "decision": "tie",
+  "preferred_label": null,
+  "rejected_label": null,
+  "preference_rationale": "All three answers provide the same supported allowance and excess charge with equivalent completeness, clarity, and safety. Their minor wording differences offer no practical benefit warranting a preference.",
+  "requires_human_review": false,
+  "review_reasons": []
+}

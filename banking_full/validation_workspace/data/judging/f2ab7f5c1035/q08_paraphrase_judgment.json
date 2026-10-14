@@ -1,0 +1,91 @@
+{
+  "question_id": "q08_paraphrase",
+  "assessments": [
+    {
+      "candidate_label": "A",
+      "scores": {
+        "factual_grounding": 3,
+        "helpfulness": 3,
+        "clarity": 4,
+        "safety": 5
+      },
+      "flags": [
+        {
+          "flag": "unsupported_product_claim",
+          "explanation": "Frames the omitted passport ID type as a CIBC listing fact; the supplied extract cannot establish what CIBC lists.",
+          "source_id": "cibc_account_services_01"
+        }
+      ],
+      "evidence": [
+        {
+          "source_id": "cibc_account_services_01",
+          "quote": "acceptable ID types and product-specific channel exceptions are not fully captured"
+        }
+      ],
+      "rationale": "Provides an appropriate official-channel referral, but omits the valid-ID requirement and does not directly address expiry. The negative listing claim exceeds the incomplete extract."
+    },
+    {
+      "candidate_label": "B",
+      "scores": {
+        "factual_grounding": 3,
+        "helpfulness": 3,
+        "clarity": 3,
+        "safety": 5
+      },
+      "flags": [
+        {
+          "flag": "contradicted_source",
+          "explanation": "The quoted requirement drops 'up to', presenting two documents as required rather than a maximum.",
+          "source_id": "cibc_account_services_01"
+        }
+      ],
+      "evidence": [
+        {
+          "source_id": "cibc_account_services_01",
+          "quote": "up to two valid original identification documents that are not substantially defaced"
+        },
+        {
+          "source_id": "cibc_account_services_01",
+          "quote": "acceptable ID types and product-specific channel exceptions are not fully captured"
+        }
+      ],
+      "rationale": "Acknowledges missing passport-specific details and refers appropriately, but misquotes the document-count condition and discusses maximum validity rather than clearly explaining that ID must be valid and expiry acceptance is unresolved."
+    },
+    {
+      "candidate_label": "C",
+      "scores": {
+        "factual_grounding": 1,
+        "helpfulness": 2,
+        "clarity": 3,
+        "safety": 3
+      },
+      "flags": [
+        {
+          "flag": "unsupported_product_claim",
+          "explanation": "Invents source support for passport acceptance and predicts expired-passport acceptance without evidence.",
+          "source_id": "cibc_account_services_01"
+        }
+      ],
+      "evidence": [
+        {
+          "source_id": "cibc_account_services_01",
+          "quote": "up to two valid original identification documents that are not substantially defaced"
+        },
+        {
+          "source_id": "cibc_account_services_01",
+          "quote": "acceptable ID types and product-specific channel exceptions are not fully captured"
+        }
+      ],
+      "rationale": "Correctly repeats the general requirement but fabricates passport-specific support. The expired-ID assurance risks reliance on an unresolved eligibility condition; a later referral does not cure it."
+    }
+  ],
+  "decision": "no_acceptable_answer",
+  "preferred_label": null,
+  "rejected_label": null,
+  "preference_rationale": "No candidate meets the grounding threshold without unresolved flags. An acceptable answer would state the valid-original-ID requirement, acknowledge the missing passport/expiry policy, and refer to an authorized CIBC channel.",
+  "requires_human_review": true,
+  "review_reasons": [
+    "All candidates have factual grounding below 4 and unresolved factual flags.",
+    "Candidate C also has safety below 4 because its unsupported expired-ID assurance invites reliance."
+  ]
+}

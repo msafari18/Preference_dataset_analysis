@@ -1,0 +1,90 @@
+{
+  "question_id": "q06_paraphrase",
+  "assessments": [
+    {
+      "candidate_label": "A",
+      "scores": {
+        "factual_grounding": 2,
+        "helpfulness": 2,
+        "clarity": 3,
+        "safety": 3
+      },
+      "flags": [
+        {
+          "flag": "unsupported_product_claim",
+          "explanation": "Saying the applicant is not quite old enough asserts ineligibility without the province or territory or its majority age.",
+          "source_id": "cibc_everyday_eligibility_01"
+        },
+        {
+          "flag": "missing_escalation",
+          "explanation": "Does not acknowledge that this applicant's eligibility remains unresolved or direct them to an official bank channel.",
+          "rule_id": "clarification"
+        }
+      ],
+      "evidence": [
+        {
+          "source_id": "cibc_everyday_eligibility_01",
+          "quote": "The stated qualification conditions are Canadian residency and reaching the age of majority in the applicant\u2019s province or territory."
+        }
+      ],
+      "rationale": "Correctly mentions the jurisdiction-dependent condition but gives an unsupported negative eligibility conclusion and leaves the necessary uncertainty unresolved."
+    },
+    {
+      "candidate_label": "B",
+      "scores": {
+        "factual_grounding": 2,
+        "helpfulness": 3,
+        "clarity": 4,
+        "safety": 4
+      },
+      "flags": [
+        {
+          "flag": "unsupported_product_claim",
+          "explanation": "The supplied context gives no numeric majority ages or basis for saying 18 typically qualifies or that this applicant likely meets the age condition.",
+          "source_id": "cibc_everyday_eligibility_01"
+        }
+      ],
+      "evidence": [
+        {
+          "source_id": "cibc_everyday_eligibility_01",
+          "quote": "Do not infer a universal minimum age or guarantee account approval."
+        },
+        {
+          "source_id": "cibc_everyday_eligibility_01",
+          "quote": "The numeric monthly fee is not exposed in the retrieved page text and is intentionally omitted."
+        }
+      ],
+      "rationale": "Preserves the stated condition and recommends contacting CIBC, but its likely-eligible conclusion relies on unsupported age information. Fee uncertainty is accurate but tangential."
+    },
+    {
+      "candidate_label": "C",
+      "scores": {
+        "factual_grounding": 5,
+        "helpfulness": 4,
+        "clarity": 5,
+        "safety": 5
+      },
+      "flags": [],
+      "evidence": [
+        {
+          "source_id": "cibc_everyday_eligibility_01",
+          "quote": "The stated qualification conditions are Canadian residency and reaching the age of majority in the applicant\u2019s province or territory."
+        },
+        {
+          "source_id": "cibc_everyday_eligibility_01",
+          "quote": "Do not infer a universal minimum age or guarantee account approval."
+        }
+      ],
+      "rationale": "Preserves both conditions and appropriately leaves eligibility unresolved, directing the applicant to official CIBC contacts. Asking their province or territory would make the next step more specific."
+    }
+  ],
+  "decision": "pair",
+  "preferred_label": "C",
+  "rejected_label": "A",
+  "preference_rationale": "C accurately explains the conditional age requirement and provides an official confirmation path; A asserts that the applicant is too young without supporting jurisdiction information.",
+  "requires_human_review": true,
+  "review_reasons": [
+    "A and B contain unsupported eligibility claims and factual grounding below 4.",
+    "A has an unresolved clarification/escalation failure and safety below 4."
+  ]
+}

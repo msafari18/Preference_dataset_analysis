@@ -1,0 +1,95 @@
+{
+  "question_id": "q04_paraphrase",
+  "assessments": [
+    {
+      "candidate_label": "A",
+      "scores": {
+        "factual_grounding": 3,
+        "helpfulness": 4,
+        "clarity": 5,
+        "safety": 5
+      },
+      "flags": [
+        {
+          "flag": "unsupported_product_claim",
+          "explanation": "Categorically excludes online banking and the mobile app for joint opening, although the selected summary names supported channels without explicitly establishing an exhaustive prohibition.",
+          "source_id": "cibc_account_services_01"
+        }
+      ],
+      "evidence": [
+        {
+          "source_id": "cibc_account_services_01",
+          "quote": "Joint accounts can be opened at a banking centre or through telephone banking."
+        },
+        {
+          "source_id": "cibc_account_services_01",
+          "quote": "Selected FAQs only; acceptable ID types and product-specific channel exceptions are not fully captured."
+        }
+      ],
+      "rationale": "Accurately identifies the two documented joint-opening channels, but adds an unsupported categorical exclusion. The source is an incomplete FAQ summary, so omitted channels should not be treated as definitively unavailable."
+    },
+    {
+      "candidate_label": "B",
+      "scores": {
+        "factual_grounding": 2,
+        "helpfulness": 2,
+        "clarity": 4,
+        "safety": 4
+      },
+      "flags": [
+        {
+          "flag": "unsupported_product_claim",
+          "explanation": "Extends online and mobile opening channels from single-holder applications to joint accounts; the supplied context does not support that extension.",
+          "source_id": "cibc_account_services_01"
+        }
+      ],
+      "evidence": [
+        {
+          "source_id": "cibc_account_services_01",
+          "quote": "The FAQ lists banking centres, online banking, the mobile app, and telephone banking as single-holder opening channels, with product-specific exceptions."
+        },
+        {
+          "source_id": "cibc_account_services_01",
+          "quote": "Selected FAQs only; acceptable ID types and product-specific channel exceptions are not fully captured."
+        }
+      ],
+      "rationale": "Correctly names banking centres and telephone banking, but misapplies the single-holder channel list to joint opening. Estate and Quebec guidance is unnecessary to this question."
+    },
+    {
+      "candidate_label": "C",
+      "scores": {
+        "factual_grounding": 3,
+        "helpfulness": 4,
+        "clarity": 5,
+        "safety": 5
+      },
+      "flags": [
+        {
+          "flag": "unsupported_product_claim",
+          "explanation": "Categorically excludes online banking and the mobile app for joint opening, although the selected summary names supported channels without explicitly establishing an exhaustive prohibition.",
+          "source_id": "cibc_account_services_01"
+        }
+      ],
+      "evidence": [
+        {
+          "source_id": "cibc_account_services_01",
+          "quote": "Joint accounts can be opened at a banking centre or through telephone banking."
+        },
+        {
+          "source_id": "cibc_account_services_01",
+          "quote": "Selected FAQs only; acceptable ID types and product-specific channel exceptions are not fully captured."
+        }
+      ],
+      "rationale": "Accurately identifies the two documented joint-opening channels, but adds an unsupported categorical exclusion. The source is an incomplete FAQ summary, so omitted channels should not be treated as definitively unavailable."
+    }
+  ],
+  "decision": "no_acceptable_answer",
+  "preferred_label": null,
+  "rejected_label": null,
+  "preference_rationale": "All candidates add unsupported channel claims. A and C are substantively equivalent; B incorrectly extends the single-holder channel list to joint accounts. None meets the factual eligibility threshold without unresolved flags.",
+  "requires_human_review": true,
+  "review_reasons": [
+    "All candidates have unsupported_product_claim flags and factual grounding below 4.",
+    "Confirm whether the documented joint-opening channels are exhaustive before accepting categorical channel exclusions."
+  ]
+}

@@ -1,0 +1,91 @@
+{
+  "question_id": "q07_paraphrase",
+  "assessments": [
+    {
+      "candidate_label": "A",
+      "scores": {
+        "factual_grounding": 2,
+        "helpfulness": 2,
+        "clarity": 5,
+        "safety": 3
+      },
+      "flags": [
+        {
+          "flag": "unsupported_product_claim",
+          "explanation": "Invents account-count-only tier qualification and definitively excludes external investments although qualification definitions are omitted.",
+          "source_id": "cibc_smart_fees_01"
+        },
+        {
+          "flag": "missing_escalation",
+          "explanation": "Does not acknowledge unresolved eligibility or direct the customer to an official bank channel.",
+          "rule_id": "clarification"
+        }
+      ],
+      "evidence": [
+        {
+          "source_id": "cibc_smart_fees_01",
+          "quote": "Linked footnotes and eligible-balance definitions were not captured. Do not infer full rebate eligibility, tier qualification"
+        }
+      ],
+      "rationale": "Clear wording presents unsupported qualification rules as fact. The definitive eligibility advice and absent escalation create a material risk of misleading the customer."
+    },
+    {
+      "candidate_label": "B",
+      "scores": {
+        "factual_grounding": 2,
+        "helpfulness": 2,
+        "clarity": 4,
+        "safety": 3
+      },
+      "flags": [
+        {
+          "flag": "unsupported_product_claim",
+          "explanation": "Treats the fee coverage for up to three accounts as a qualification rule, asserts balances do not determine tiers, and excludes other-bank balances without evidence.",
+          "source_id": "cibc_smart_fees_01"
+        },
+        {
+          "flag": "missing_escalation",
+          "explanation": "Gives a definitive answer to eligibility that the source cannot resolve without uncertainty or official-channel referral.",
+          "rule_id": "clarification"
+        }
+      ],
+      "evidence": [
+        {
+          "source_id": "cibc_smart_fees_01",
+          "quote": "For Tier 1, the monthly fee for up to three Smart Accounts is $16.95."
+        },
+        {
+          "source_id": "cibc_smart_fees_01",
+          "quote": "Linked footnotes and eligible-balance definitions were not captured. Do not infer full rebate eligibility, tier qualification"
+        }
+      ],
+      "rationale": "Some fee information is supported, but the central eligibility answer is invented. Its tier summary also blurs fee coverage and qualification. Definitive unsupported eligibility guidance creates a material customer risk."
+    },
+    {
+      "candidate_label": "C",
+      "scores": {
+        "factual_grounding": 4,
+        "helpfulness": 4,
+        "clarity": 4,
+        "safety": 5
+      },
+      "flags": [],
+      "evidence": [
+        {
+          "source_id": "cibc_smart_fees_01",
+          "quote": "Selected table facts only. Linked footnotes and eligible-balance definitions were not captured."
+        }
+      ],
+      "rationale": "Accurately describes the limits of the supplied information and directs the customer to CIBC for confirmation. 'No indication' could more explicitly state that omission cannot establish whether external investments qualify, but it stops short of a definitive exclusion."
+    }
+  ],
+  "decision": "pair",
+  "preferred_label": "C",
+  "rejected_label": "A",
+  "preference_rationale": "C qualifies the source limitation and recommends CIBC confirmation; A invents an account-count-only qualification rule and a definitive exclusion. C meets eligibility thresholds while A does not.",
+  "requires_human_review": true,
+  "review_reasons": [
+    "A and B contain unsupported tier-eligibility claims and omit required uncertainty and escalation.",
+    "A and B have factual grounding and safety scores below 4."
+  ]
+}

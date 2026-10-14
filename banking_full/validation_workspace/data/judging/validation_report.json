@@ -1,0 +1,8 @@
+{
+  "status": "pass",
+  "question_count": 20,
+  "candidate_count": 60,
+  "errors": [],
+  "warnings": [],
+  "scope": "Structural validation only; does not establish factual correctness, safety, or preference quality."
+}

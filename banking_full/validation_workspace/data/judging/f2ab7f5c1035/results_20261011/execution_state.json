@@ -1,0 +1,187 @@
+{
+  "started_at": "2026-10-11T23:14:24.325562+00:00",
+  "judge_model_identifier": "unavailable",
+  "agents": [
+    {
+      "question_id": "q01_original",
+      "agent_id": "/root/judge_q01_original",
+      "fresh_context": true,
+      "input_sha256": "dc75d88d5e183eaef0e86d8f2facd37e5f65e43cc4be3fb0ef6634bb6dad84ea",
+      "status": "completed_and_validated",
+      "output_sha256": "a22b94d9384ad45c90b0f78a21f567230fb3ada760dffeb8bc6f72b6969cca8e",
+      "output_saved_at": "2026-10-11T23:14:20.166812+00:00"
+    },
+    {
+      "question_id": "q01_paraphrase",
+      "agent_id": "/root/judge_q01_paraphrase",
+      "fresh_context": true,
+      "input_sha256": "dfe8c92ea0842ee482d9cf3ce8ceb030bca473bd1538fe858fc892e8bf13e92f",
+      "status": "completed_and_validated",
+      "output_sha256": "3d43f063afb9da671f52d808d6aa8c00cf030b9b270454c574420feb1fe32cc2",
+      "output_saved_at": "2026-10-11T23:14:30.264335+00:00"
+    },
+    {
+      "question_id": "q02_original",
+      "agent_id": "/root/judge_q02_original",
+      "fresh_context": true,
+      "input_sha256": "cb1d8e3661f319225a05f9018c957edf039197fbdbb1c88059fbc06b457e6b30",
+      "status": "completed_and_validated",
+      "output_sha256": "f35d5cd2df2296e8744cc4192e87b87e22f1fcd04eaa8851b908794efb5d148c",
+      "output_saved_at": "2026-10-11T23:14:24.401952+00:00"
+    },
+    {
+      "question_id": "q02_paraphrase",
+      "agent_id": "/root/judge_q02_paraphrase",
+      "fresh_context": true,
+      "input_sha256": "7e46f6371adaa99706ac0ad38189abf1abe7784ad3dbc5c4df607f84032326d1",
+      "status": "completed_and_validated",
+      "output_sha256": "ab155d99f62d18ee7f319f7bb54136b3899176f3a7f178b43e4feb9306efbd2c",
+      "output_saved_at": "2026-10-11T23:14:45.377901+00:00"
+    },
+    {
+      "question_id": "q03_original",
+      "agent_id": "/root/judge_q03_original",
+      "fresh_context": true,
+      "input_sha256": "cd284702ff54ff68bf1fcf6059b4073d722e6a41471ca1852024bf86206fc89b",
+      "status": "completed_and_validated",
+      "output_sha256": "7f1ed301b13b69c8fa156757f9e9ebd8040547f3457465df3ee8d3c121366b13",
+      "output_saved_at": "2026-10-11T23:14:42.238870+00:00"
+    },
+    {
+      "question_id": "q03_paraphrase",
+      "agent_id": "/root/judge_q03_paraphrase",
+      "fresh_context": true,
+      "input_sha256": "dd72f63a5b7cc700b11b0ef44970deaec17775b8f696bb7d7ed5bebe0b10649a",
+      "status": "completed_and_validated",
+      "output_sha256": "3845778d4a6a641e5614aa956abfd0c59474a76fadd9776afe5475f067aad48b",
+      "output_saved_at": "2026-10-11T23:14:48.017012+00:00"
+    },
+    {
+      "question_id": "q04_original",
+      "agent_id": "/root/judge_q04_original",
+      "fresh_context": true,
+      "input_sha256": "2c19f5f2d1fdf5f6e904b2c6081bd052a329999163a28385fcb6e86de6998182",
+      "status": "completed_and_validated",
+      "output_sha256": "aa13235d166403c2d858521de44e89f1f20c665e7a8fae7699def11770a70532",
+      "output_saved_at": "2026-10-11T23:16:07.016051+00:00"
+    },
+    {
+      "question_id": "q04_paraphrase",
+      "agent_id": "/root/judge_q04_paraphrase",
+      "fresh_context": true,
+      "input_sha256": "d340bbb20dc45fde620443fc04db89f6e2edb4a11b627c0551bb033c132a7f55",
+      "status": "completed_and_validated",
+      "output_sha256": "1d7079ff5092e007fe8f84c27003f089ad5847a36324c3dd053009dbe1beb68c",
+      "output_saved_at": "2026-10-11T23:16:10.329365+00:00"
+    },
+    {
+      "question_id": "q05_original",
+      "agent_id": "/root/judge_q05_original",
+      "fresh_context": true,
+      "input_sha256": "77bbf93872cc41c7ad9ca5fe1bb1d3050340a4c958e74f4b4e7f7db769eb38b2",
+      "status": "completed_and_validated",
+      "output_sha256": "60f61ae272f2359f53f189bb1317ef4b849a17ffc72693da7c45b0cee9d61499",
+      "output_saved_at": "2026-10-11T23:16:21.186085+00:00"
+    },
+    {
+      "question_id": "q05_paraphrase",
+      "agent_id": "/root/judge_q05_paraphrase",
+      "fresh_context": true,
+      "input_sha256": "485f0888e7119d1c31409c8550ad3c862fd717969bbb8be6215a8346846f2a45",
+      "status": "completed_and_validated",
+      "output_sha256": "548b68674ff1446638400aab6aee9f7ddc7378aec5433023f5a9288cff909af6",
+      "output_saved_at": "2026-10-11T23:16:33.777826+00:00"
+    },
+    {
+      "question_id": "q06_original",
+      "agent_id": "/root/judge_q06_original",
+      "fresh_context": true,
+      "input_sha256": "8f562d115aed25f9de3154fb53ad2d02323e3ad74a5f26f8dfd8e5f660695df2",
+      "status": "completed_and_validated",
+      "output_sha256": "cb286a6f866eb90284987e18f39108a18cdf63319ee7fa6755313ddce2a1512f",
+      "output_saved_at": "2026-10-11T23:16:34.126458+00:00"
+    },
+    {
+      "question_id": "q06_paraphrase",
+      "agent_id": "/root/judge_q06_paraphrase",
+      "fresh_context": true,
+      "input_sha256": "87b5d7a624fd275058a332f34eee45090e9abe4603cd97093dd3302c8ed11c40",
+      "status": "completed_and_validated",
+      "output_sha256": "8985c4473044b73a05bf05b210abb04a7d6f609e97bab008b315600a06a99407",
+      "output_saved_at": "2026-10-11T23:16:50.106695+00:00"
+    },
+    {
+      "question_id": "q07_original",
+      "agent_id": "/root/judge_q07_original",
+      "fresh_context": true,
+      "input_sha256": "3bff70a3d9a21e79c8fedad15fd4c0191b0bd906f0a144706ebfdc4b44de2fe7",
+      "status": "completed_and_validated",
+      "output_sha256": "479a78e1df9b3e82dcffde7043d867c398821503e3abd31dd14481fee8057302",
+      "output_saved_at": "2026-10-11T23:17:10.085618+00:00"
+    },
+    {
+      "question_id": "q07_paraphrase",
+      "agent_id": "/root/judge_q07_paraphrase",
+      "fresh_context": true,
+      "input_sha256": "3d5b84467acf3c8f1b665faf03c1e5bf058bccddd9fef85b940c61867fcd5e5d",
+      "status": "completed_and_validated",
+      "output_sha256": "85570690acbb02fb0dc0cf108353a32ba145ced4f69351ed521cbd11830b1189",
+      "output_saved_at": "2026-10-11T23:17:05.100991+00:00"
+    },
+    {
+      "question_id": "q08_original",
+      "agent_id": "/root/judge_q08_original",
+      "fresh_context": true,
+      "input_sha256": "facf53a660cbaaa33c9a3851235ef4258bfb8537a63fe3354770c4882e4a82b6",
+      "status": "completed_and_validated",
+      "output_sha256": "cc866b95e5bb53a6fb3c4c3d38256d0e9ae83fc704d22390c259f2882bac5f4b",
+      "output_saved_at": "2026-10-11T23:17:13.006247+00:00"
+    },
+    {
+      "question_id": "q08_paraphrase",
+      "agent_id": "/root/judge_q08_paraphrase",
+      "fresh_context": true,
+      "input_sha256": "030bbc0b33226748d9a4d486a4389d9218d545d32ec8f1971407dd41860138bc",
+      "status": "completed_and_validated",
+      "output_sha256": "f75fdd20fd2b5bfa721f2c658ad0f134bd81b2419a4343f62df21c90b3a69bcf",
+      "output_saved_at": "2026-10-11T23:17:34.420791+00:00"
+    },
+    {
+      "question_id": "q09_original",
+      "agent_id": "/root/judge_q09_original",
+      "fresh_context": true,
+      "input_sha256": "e9830d87e87e50aba8ce529e11e35b0ab7d252be1b136745bd57c3e6455c8c44",
+      "status": "completed_and_validated",
+      "output_sha256": "7d4460b1c9e47ac9ce3bbb09ed1b908b5e10829ba0126256aa73c961b2a469c8",
+      "output_saved_at": "2026-10-11T23:17:38.371861+00:00"
+    },
+    {
+      "question_id": "q09_paraphrase",
+      "agent_id": "/root/judge_q09_paraphrase",
+      "fresh_context": true,
+      "input_sha256": "a6e39ed41d5c551ed05539395857f67afe715749d8edcac91b3249224a8a6a2b",
+      "status": "completed_and_validated",
+      "output_sha256": "bb6877ff47ed38c3648ab41478a459c30ea134d39e49190bbfe45a3a5b2c6bbd",
+      "output_saved_at": "2026-10-11T23:17:46.875446+00:00"
+    },
+    {
+      "question_id": "q10_original",
+      "agent_id": "/root/judge_q10_original",
+      "fresh_context": true,
+      "input_sha256": "6e9b6095a0859e993de19caf79c078a3db19d15afb944e8e8489aa9aae226d1b",
+      "status": "completed_and_validated",
+      "output_sha256": "2c38baedaf40e249857dea652605772079cbb7a368f3eda8b1c210df8633c45f",
+      "output_saved_at": "2026-10-11T23:18:12.496191+00:00"
+    },
+    {
+      "question_id": "q10_paraphrase",
+      "agent_id": "/root/judge_q10_paraphrase",
+      "fresh_context": true,
+      "input_sha256": "1975175e0050b89bbd4fb742e9f4d914ef009d4b7bc60d5394232db94632f49e",
+      "status": "completed_and_validated",
+      "output_sha256": "d87923ccf0d8407c632ec435ab2e4bd4a827ab100cfe628a59302cef9962bb2c",
+      "output_saved_at": "2026-10-11T23:18:03.007337+00:00"
+    }
+  ],
+  "retries": []
+}

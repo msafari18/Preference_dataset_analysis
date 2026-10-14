@@ -1,0 +1,85 @@
+{
+  "question_id": "q08_original",
+  "assessments": [
+    {
+      "candidate_label": "A",
+      "scores": {
+        "factual_grounding": 2,
+        "helpfulness": 2,
+        "clarity": 3,
+        "safety": 3
+      },
+      "flags": [
+        {
+          "flag": "unsupported_product_claim",
+          "explanation": "Claims passports are specifically listed and suggests expired identification might be valid; neither is supported. Also turns up to two documents into two.",
+          "source_id": "cibc_account_services_01"
+        }
+      ],
+      "evidence": [
+        {
+          "source_id": "cibc_account_services_01",
+          "quote": "up to two valid original identification documents that are not substantially defaced"
+        },
+        {
+          "source_id": "cibc_account_services_01",
+          "quote": "acceptable ID types and product-specific channel exceptions are not fully captured"
+        }
+      ],
+      "rationale": "The referral is useful, but unsupported passport acceptance and reassurance about expiry could lead the customer to rely on unsuitable identification, creating material eligibility uncertainty."
+    },
+    {
+      "candidate_label": "B",
+      "scores": {
+        "factual_grounding": 2,
+        "helpfulness": 3,
+        "clarity": 4,
+        "safety": 4
+      },
+      "flags": [
+        {
+          "flag": "unsupported_product_claim",
+          "explanation": "Attributes acceptance of valid original passports to official information although supplied context does not identify accepted document types.",
+          "source_id": "cibc_account_services_01"
+        }
+      ],
+      "evidence": [
+        {
+          "source_id": "cibc_account_services_01",
+          "quote": "acceptable ID types and product-specific channel exceptions are not fully captured"
+        },
+        {
+          "source_id": "cibc_account_services_01",
+          "quote": "up to two valid original identification documents"
+        }
+      ],
+      "rationale": "Correctly notes validity and cautiously warns expiry may be a problem, with an official-channel referral. However, the passport-specific acceptance claim is unsupported."
+    },
+    {
+      "candidate_label": "C",
+      "scores": {
+        "factual_grounding": 5,
+        "helpfulness": 4,
+        "clarity": 5,
+        "safety": 5
+      },
+      "flags": [],
+      "evidence": [
+        {
+          "source_id": "cibc_account_services_01",
+          "quote": "acceptable ID types and product-specific channel exceptions are not fully captured"
+        }
+      ],
+      "rationale": "Accurately acknowledges missing acceptable-ID details and refers to official CIBC channels without inventing eligibility. It could be more helpful by mentioning the explicit valid-original-document requirement and directly addressing uncertainty about expiry."
+    }
+  ],
+  "decision": "pair",
+  "preferred_label": "C",
+  "rejected_label": "A",
+  "preference_rationale": "C is eligible and provides grounded uncertainty with an official-channel referral. A invents passport acceptance and gives unsupported reassurance about expired identification; its referral does not cure those claims.",
+  "requires_human_review": true,
+  "review_reasons": [
+    "A and B contain unsupported product claims and factual grounding below 4.",
+    "A's unsupported reassurance about expired identification also warrants safety review."
+  ]
+}

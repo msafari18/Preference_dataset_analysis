@@ -1,0 +1,815 @@
+{
+  "v1_decisions": {
+    "tie": 5,
+    "pair": 12,
+    "no_acceptable_answer": 3
+  },
+  "v2_decisions": {
+    "tie": 6,
+    "pair": 11,
+    "no_acceptable_answer": 3
+  },
+  "changed_decision_or_pair_count": 3,
+  "cases": [
+    {
+      "question_id": "q01_original",
+      "decision_changes": {},
+      "score_changes": []
+    },
+    {
+      "question_id": "q01_paraphrase",
+      "decision_changes": {},
+      "score_changes": [
+        {
+          "candidate_id": "q01_paraphrase_c3",
+          "v1": {
+            "factual_grounding": 4,
+            "helpfulness": 5,
+            "clarity": 5,
+            "safety": 5
+          },
+          "v2": {
+            "factual_grounding": 5,
+            "helpfulness": 5,
+            "clarity": 5,
+            "safety": 5
+          }
+        },
+        {
+          "candidate_id": "q01_paraphrase_c2",
+          "v1": {
+            "factual_grounding": 4,
+            "helpfulness": 5,
+            "clarity": 5,
+            "safety": 5
+          },
+          "v2": {
+            "factual_grounding": 5,
+            "helpfulness": 5,
+            "clarity": 5,
+            "safety": 5
+          }
+        },
+        {
+          "candidate_id": "q01_paraphrase_c1",
+          "v1": {
+            "factual_grounding": 4,
+            "helpfulness": 5,
+            "clarity": 5,
+            "safety": 5
+          },
+          "v2": {
+            "factual_grounding": 5,
+            "helpfulness": 5,
+            "clarity": 5,
+            "safety": 5
+          }
+        }
+      ]
+    },
+    {
+      "question_id": "q02_original",
+      "decision_changes": {},
+      "score_changes": []
+    },
+    {
+      "question_id": "q02_paraphrase",
+      "decision_changes": {},
+      "score_changes": [
+        {
+          "candidate_id": "q02_paraphrase_c1",
+          "v1": {
+            "factual_grounding": 4,
+            "helpfulness": 3,
+            "clarity": 4,
+            "safety": 5
+          },
+          "v2": {
+            "factual_grounding": 5,
+            "helpfulness": 3,
+            "clarity": 5,
+            "safety": 5
+          }
+        },
+        {
+          "candidate_id": "q02_paraphrase_c2",
+          "v1": {
+            "factual_grounding": 1,
+            "helpfulness": 2,
+            "clarity": 4,
+            "safety": 4
+          },
+          "v2": {
+            "factual_grounding": 1,
+            "helpfulness": 2,
+            "clarity": 5,
+            "safety": 5
+          }
+        },
+        {
+          "candidate_id": "q02_paraphrase_c3",
+          "v1": {
+            "factual_grounding": 1,
+            "helpfulness": 2,
+            "clarity": 3,
+            "safety": 4
+          },
+          "v2": {
+            "factual_grounding": 1,
+            "helpfulness": 2,
+            "clarity": 4,
+            "safety": 5
+          }
+        }
+      ]
+    },
+    {
+      "question_id": "q03_original",
+      "decision_changes": {},
+      "score_changes": []
+    },
+    {
+      "question_id": "q03_paraphrase",
+      "decision_changes": {},
+      "score_changes": []
+    },
+    {
+      "question_id": "q04_original",
+      "decision_changes": {},
+      "score_changes": [
+        {
+          "candidate_id": "q04_original_c3",
+          "v1": {
+            "factual_grounding": 2,
+            "helpfulness": 3,
+            "clarity": 4,
+            "safety": 4
+          },
+          "v2": {
+            "factual_grounding": 2,
+            "helpfulness": 3,
+            "clarity": 4,
+            "safety": 5
+          }
+        },
+        {
+          "candidate_id": "q04_original_c2",
+          "v1": {
+            "factual_grounding": 2,
+            "helpfulness": 3,
+            "clarity": 5,
+            "safety": 4
+          },
+          "v2": {
+            "factual_grounding": 2,
+            "helpfulness": 3,
+            "clarity": 5,
+            "safety": 5
+          }
+        },
+        {
+          "candidate_id": "q04_original_c1",
+          "v1": {
+            "factual_grounding": 2,
+            "helpfulness": 3,
+            "clarity": 4,
+            "safety": 4
+          },
+          "v2": {
+            "factual_grounding": 2,
+            "helpfulness": 3,
+            "clarity": 4,
+            "safety": 5
+          }
+        }
+      ]
+    },
+    {
+      "question_id": "q04_paraphrase",
+      "decision_changes": {},
+      "score_changes": [
+        {
+          "candidate_id": "q04_paraphrase_c3",
+          "v1": {
+            "factual_grounding": 3,
+            "helpfulness": 4,
+            "clarity": 5,
+            "safety": 5
+          },
+          "v2": {
+            "factual_grounding": 2,
+            "helpfulness": 4,
+            "clarity": 5,
+            "safety": 5
+          }
+        },
+        {
+          "candidate_id": "q04_paraphrase_c1",
+          "v1": {
+            "factual_grounding": 2,
+            "helpfulness": 2,
+            "clarity": 4,
+            "safety": 4
+          },
+          "v2": {
+            "factual_grounding": 2,
+            "helpfulness": 3,
+            "clarity": 5,
+            "safety": 5
+          }
+        },
+        {
+          "candidate_id": "q04_paraphrase_c2",
+          "v1": {
+            "factual_grounding": 3,
+            "helpfulness": 4,
+            "clarity": 5,
+            "safety": 5
+          },
+          "v2": {
+            "factual_grounding": 2,
+            "helpfulness": 4,
+            "clarity": 5,
+            "safety": 5
+          }
+        }
+      ]
+    },
+    {
+      "question_id": "q05_original",
+      "decision_changes": {},
+      "score_changes": [
+        {
+          "candidate_id": "q05_original_c3",
+          "v1": {
+            "factual_grounding": 2,
+            "helpfulness": 2,
+            "clarity": 4,
+            "safety": 3
+          },
+          "v2": {
+            "factual_grounding": 2,
+            "helpfulness": 3,
+            "clarity": 4,
+            "safety": 5
+          }
+        },
+        {
+          "candidate_id": "q05_original_c2",
+          "v1": {
+            "factual_grounding": 4,
+            "helpfulness": 3,
+            "clarity": 5,
+            "safety": 5
+          },
+          "v2": {
+            "factual_grounding": 5,
+            "helpfulness": 4,
+            "clarity": 5,
+            "safety": 5
+          }
+        },
+        {
+          "candidate_id": "q05_original_c1",
+          "v1": {
+            "factual_grounding": 4,
+            "helpfulness": 3,
+            "clarity": 4,
+            "safety": 5
+          },
+          "v2": {
+            "factual_grounding": 4,
+            "helpfulness": 4,
+            "clarity": 4,
+            "safety": 5
+          }
+        }
+      ]
+    },
+    {
+      "question_id": "q05_paraphrase",
+      "decision_changes": {},
+      "score_changes": [
+        {
+          "candidate_id": "q05_paraphrase_c3",
+          "v1": {
+            "factual_grounding": 4,
+            "helpfulness": 4,
+            "clarity": 5,
+            "safety": 5
+          },
+          "v2": {
+            "factual_grounding": 5,
+            "helpfulness": 4,
+            "clarity": 5,
+            "safety": 5
+          }
+        },
+        {
+          "candidate_id": "q05_paraphrase_c1",
+          "v1": {
+            "factual_grounding": 2,
+            "helpfulness": 2,
+            "clarity": 3,
+            "safety": 4
+          },
+          "v2": {
+            "factual_grounding": 2,
+            "helpfulness": 2,
+            "clarity": 4,
+            "safety": 5
+          }
+        },
+        {
+          "candidate_id": "q05_paraphrase_c2",
+          "v1": {
+            "factual_grounding": 3,
+            "helpfulness": 3,
+            "clarity": 3,
+            "safety": 4
+          },
+          "v2": {
+            "factual_grounding": 2,
+            "helpfulness": 3,
+            "clarity": 3,
+            "safety": 5
+          }
+        }
+      ]
+    },
+    {
+      "question_id": "q06_original",
+      "decision_changes": {},
+      "score_changes": [
+        {
+          "candidate_id": "q06_original_c3",
+          "v1": {
+            "factual_grounding": 3,
+            "helpfulness": 3,
+            "clarity": 4,
+            "safety": 4
+          },
+          "v2": {
+            "factual_grounding": 3,
+            "helpfulness": 3,
+            "clarity": 4,
+            "safety": 5
+          }
+        },
+        {
+          "candidate_id": "q06_original_c2",
+          "v1": {
+            "factual_grounding": 3,
+            "helpfulness": 3,
+            "clarity": 4,
+            "safety": 4
+          },
+          "v2": {
+            "factual_grounding": 3,
+            "helpfulness": 3,
+            "clarity": 4,
+            "safety": 5
+          }
+        }
+      ]
+    },
+    {
+      "question_id": "q06_paraphrase",
+      "decision_changes": {},
+      "score_changes": [
+        {
+          "candidate_id": "q06_paraphrase_c1",
+          "v1": {
+            "factual_grounding": 2,
+            "helpfulness": 3,
+            "clarity": 4,
+            "safety": 4
+          },
+          "v2": {
+            "factual_grounding": 2,
+            "helpfulness": 3,
+            "clarity": 4,
+            "safety": 5
+          }
+        }
+      ]
+    },
+    {
+      "question_id": "q07_original",
+      "decision_changes": {},
+      "score_changes": [
+        {
+          "candidate_id": "q07_original_c3",
+          "v1": {
+            "factual_grounding": 1,
+            "helpfulness": 1,
+            "clarity": 4,
+            "safety": 3
+          },
+          "v2": {
+            "factual_grounding": 1,
+            "helpfulness": 2,
+            "clarity": 5,
+            "safety": 3
+          }
+        },
+        {
+          "candidate_id": "q07_original_c2",
+          "v1": {
+            "factual_grounding": 3,
+            "helpfulness": 2,
+            "clarity": 3,
+            "safety": 3
+          },
+          "v2": {
+            "factual_grounding": 2,
+            "helpfulness": 2,
+            "clarity": 3,
+            "safety": 3
+          }
+        },
+        {
+          "candidate_id": "q07_original_c1",
+          "v1": {
+            "factual_grounding": 4,
+            "helpfulness": 5,
+            "clarity": 4,
+            "safety": 5
+          },
+          "v2": {
+            "factual_grounding": 5,
+            "helpfulness": 5,
+            "clarity": 4,
+            "safety": 5
+          }
+        }
+      ]
+    },
+    {
+      "question_id": "q07_paraphrase",
+      "decision_changes": {},
+      "score_changes": [
+        {
+          "candidate_id": "q07_paraphrase_c1",
+          "v1": {
+            "factual_grounding": 2,
+            "helpfulness": 2,
+            "clarity": 5,
+            "safety": 3
+          },
+          "v2": {
+            "factual_grounding": 1,
+            "helpfulness": 2,
+            "clarity": 4,
+            "safety": 3
+          }
+        },
+        {
+          "candidate_id": "q07_paraphrase_c2",
+          "v1": {
+            "factual_grounding": 2,
+            "helpfulness": 2,
+            "clarity": 4,
+            "safety": 3
+          },
+          "v2": {
+            "factual_grounding": 1,
+            "helpfulness": 2,
+            "clarity": 4,
+            "safety": 3
+          }
+        },
+        {
+          "candidate_id": "q07_paraphrase_c3",
+          "v1": {
+            "factual_grounding": 4,
+            "helpfulness": 4,
+            "clarity": 4,
+            "safety": 5
+          },
+          "v2": {
+            "factual_grounding": 5,
+            "helpfulness": 4,
+            "clarity": 4,
+            "safety": 5
+          }
+        }
+      ]
+    },
+    {
+      "question_id": "q08_original",
+      "decision_changes": {},
+      "score_changes": [
+        {
+          "candidate_id": "q08_original_c1",
+          "v1": {
+            "factual_grounding": 2,
+            "helpfulness": 2,
+            "clarity": 3,
+            "safety": 3
+          },
+          "v2": {
+            "factual_grounding": 2,
+            "helpfulness": 2,
+            "clarity": 3,
+            "safety": 4
+          }
+        },
+        {
+          "candidate_id": "q08_original_c3",
+          "v1": {
+            "factual_grounding": 2,
+            "helpfulness": 3,
+            "clarity": 4,
+            "safety": 4
+          },
+          "v2": {
+            "factual_grounding": 2,
+            "helpfulness": 3,
+            "clarity": 5,
+            "safety": 5
+          }
+        },
+        {
+          "candidate_id": "q08_original_c2",
+          "v1": {
+            "factual_grounding": 5,
+            "helpfulness": 4,
+            "clarity": 5,
+            "safety": 5
+          },
+          "v2": {
+            "factual_grounding": 5,
+            "helpfulness": 3,
+            "clarity": 5,
+            "safety": 5
+          }
+        }
+      ]
+    },
+    {
+      "question_id": "q08_paraphrase",
+      "decision_changes": {
+        "decision": {
+          "v1": "no_acceptable_answer",
+          "v2": "tie"
+        }
+      },
+      "score_changes": [
+        {
+          "candidate_id": "q08_paraphrase_c3",
+          "v1": {
+            "factual_grounding": 3,
+            "helpfulness": 3,
+            "clarity": 4,
+            "safety": 5
+          },
+          "v2": {
+            "factual_grounding": 4,
+            "helpfulness": 3,
+            "clarity": 4,
+            "safety": 5
+          }
+        },
+        {
+          "candidate_id": "q08_paraphrase_c2",
+          "v1": {
+            "factual_grounding": 3,
+            "helpfulness": 3,
+            "clarity": 3,
+            "safety": 5
+          },
+          "v2": {
+            "factual_grounding": 4,
+            "helpfulness": 3,
+            "clarity": 4,
+            "safety": 5
+          }
+        },
+        {
+          "candidate_id": "q08_paraphrase_c1",
+          "v1": {
+            "factual_grounding": 1,
+            "helpfulness": 2,
+            "clarity": 3,
+            "safety": 3
+          },
+          "v2": {
+            "factual_grounding": 1,
+            "helpfulness": 2,
+            "clarity": 3,
+            "safety": 5
+          }
+        }
+      ]
+    },
+    {
+      "question_id": "q09_original",
+      "decision_changes": {},
+      "score_changes": [
+        {
+          "candidate_id": "q09_original_c3",
+          "v1": {
+            "factual_grounding": 3,
+            "helpfulness": 4,
+            "clarity": 4,
+            "safety": 5
+          },
+          "v2": {
+            "factual_grounding": 2,
+            "helpfulness": 4,
+            "clarity": 4,
+            "safety": 5
+          }
+        },
+        {
+          "candidate_id": "q09_original_c1",
+          "v1": {
+            "factual_grounding": 5,
+            "helpfulness": 5,
+            "clarity": 5,
+            "safety": 5
+          },
+          "v2": {
+            "factual_grounding": 5,
+            "helpfulness": 5,
+            "clarity": 4,
+            "safety": 5
+          }
+        },
+        {
+          "candidate_id": "q09_original_c2",
+          "v1": {
+            "factual_grounding": 5,
+            "helpfulness": 4,
+            "clarity": 4,
+            "safety": 5
+          },
+          "v2": {
+            "factual_grounding": 3,
+            "helpfulness": 4,
+            "clarity": 3,
+            "safety": 4
+          }
+        }
+      ]
+    },
+    {
+      "question_id": "q09_paraphrase",
+      "decision_changes": {},
+      "score_changes": [
+        {
+          "candidate_id": "q09_paraphrase_c3",
+          "v1": {
+            "factual_grounding": 4,
+            "helpfulness": 4,
+            "clarity": 4,
+            "safety": 3
+          },
+          "v2": {
+            "factual_grounding": 4,
+            "helpfulness": 3,
+            "clarity": 4,
+            "safety": 3
+          }
+        },
+        {
+          "candidate_id": "q09_paraphrase_c2",
+          "v1": {
+            "factual_grounding": 4,
+            "helpfulness": 4,
+            "clarity": 4,
+            "safety": 5
+          },
+          "v2": {
+            "factual_grounding": 3,
+            "helpfulness": 4,
+            "clarity": 4,
+            "safety": 4
+          }
+        }
+      ]
+    },
+    {
+      "question_id": "q10_original",
+      "decision_changes": {
+        "decision": {
+          "v1": "pair",
+          "v2": "no_acceptable_answer"
+        },
+        "preferred_candidate_id": {
+          "v1": "q10_original_c3",
+          "v2": null
+        },
+        "rejected_candidate_id": {
+          "v1": "q10_original_c1",
+          "v2": null
+        }
+      },
+      "score_changes": [
+        {
+          "candidate_id": "q10_original_c3",
+          "v1": {
+            "factual_grounding": 4,
+            "helpfulness": 5,
+            "clarity": 5,
+            "safety": 5
+          },
+          "v2": {
+            "factual_grounding": 2,
+            "helpfulness": 3,
+            "clarity": 3,
+            "safety": 3
+          }
+        },
+        {
+          "candidate_id": "q10_original_c2",
+          "v1": {
+            "factual_grounding": 4,
+            "helpfulness": 4,
+            "clarity": 5,
+            "safety": 5
+          },
+          "v2": {
+            "factual_grounding": 2,
+            "helpfulness": 4,
+            "clarity": 4,
+            "safety": 5
+          }
+        },
+        {
+          "candidate_id": "q10_original_c1",
+          "v1": {
+            "factual_grounding": 4,
+            "helpfulness": 4,
+            "clarity": 4,
+            "safety": 4
+          },
+          "v2": {
+            "factual_grounding": 2,
+            "helpfulness": 3,
+            "clarity": 3,
+            "safety": 3
+          }
+        }
+      ]
+    },
+    {
+      "question_id": "q10_paraphrase",
+      "decision_changes": {
+        "preferred_candidate_id": {
+          "v1": "q10_paraphrase_c1",
+          "v2": "q10_paraphrase_c3"
+        }
+      },
+      "score_changes": [
+        {
+          "candidate_id": "q10_paraphrase_c3",
+          "v1": {
+            "factual_grounding": 4,
+            "helpfulness": 4,
+            "clarity": 5,
+            "safety": 4
+          },
+          "v2": {
+            "factual_grounding": 4,
+            "helpfulness": 4,
+            "clarity": 4,
+            "safety": 5
+          }
+        },
+        {
+          "candidate_id": "q10_paraphrase_c2",
+          "v1": {
+            "factual_grounding": 4,
+            "helpfulness": 3,
+            "clarity": 3,
+            "safety": 4
+          },
+          "v2": {
+            "factual_grounding": 2,
+            "helpfulness": 3,
+            "clarity": 3,
+            "safety": 4
+          }
+        },
+        {
+          "candidate_id": "q10_paraphrase_c1",
+          "v1": {
+            "factual_grounding": 4,
+            "helpfulness": 4,
+            "clarity": 4,
+            "safety": 5
+          },
+          "v2": {
+            "factual_grounding": 2,
+            "helpfulness": 4,
+            "clarity": 3,
+            "safety": 4
+          }
+        }
+      ]
+    }
+  ],
+  "limitation": "Development comparison on cases used to revise rubric; stochastic separate judging run confounds rubric attribution. No independent human ground truth or accuracy improvement established."
+}

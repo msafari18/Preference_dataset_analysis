@@ -1,0 +1,80 @@
+{
+  "question_id": "q06_original",
+  "assessments": [
+    {
+      "candidate_label": "A",
+      "scores": {
+        "factual_grounding": 3,
+        "helpfulness": 3,
+        "clarity": 4,
+        "safety": 5
+      },
+      "flags": [
+        {
+          "flag": "unsupported_product_claim",
+          "explanation": "“it's likely that you meet this requirement” assigns a likelihood to age eligibility without the applicant’s province or territory or its age threshold. The source requires reaching the local age of majority, so this could wrongly encourage an ineligible applicant. The later caveat mitigates but does not support the inference.",
+          "source_id": "cibc_everyday_eligibility_01"
+        }
+      ],
+      "evidence": [
+        {
+          "source_id": "cibc_everyday_eligibility_01",
+          "quote": "The stated qualification conditions are Canadian residency and reaching the age of majority in the applicant’s province or territory."
+        }
+      ],
+      "rationale": "Accurately states the residency and local age-of-majority conditions and recommends official confirmation, but its favorable likelihood inference is unsupported, not contradicted. No separate material security or privacy risk warrants reducing safety."
+    },
+    {
+      "candidate_label": "B",
+      "scores": {
+        "factual_grounding": 3,
+        "helpfulness": 3,
+        "clarity": 4,
+        "safety": 5
+      },
+      "flags": [
+        {
+          "flag": "unsupported_product_claim",
+          "explanation": "“it seems likely that you meet this condition” is unsupported because the source gives neither the applicant’s jurisdiction nor its age threshold. The source’s local age-of-majority condition does not establish likely eligibility at 18; the statement could mislead an applicant about whether they qualify despite the subsequent uncertainty.",
+          "source_id": "cibc_everyday_eligibility_01"
+        }
+      ],
+      "evidence": [
+        {
+          "source_id": "cibc_everyday_eligibility_01",
+          "quote": "The stated qualification conditions are Canadian residency and reaching the age of majority in the applicant’s province or territory."
+        }
+      ],
+      "rationale": "Preserves the local age condition and acknowledges missing jurisdiction-specific information, but still infers likely eligibility without evidence. Advising CIBC confirmation appropriately handles escalation; the factual gap does not independently establish a safety failure."
+    },
+    {
+      "candidate_label": "C",
+      "scores": {
+        "factual_grounding": 5,
+        "helpfulness": 4,
+        "clarity": 5,
+        "safety": 5
+      },
+      "flags": [],
+      "evidence": [
+        {
+          "source_id": "cibc_everyday_eligibility_01",
+          "quote": "The stated qualification conditions are Canadian residency and reaching the age of majority in the applicant’s province or territory."
+        },
+        {
+          "source_id": "cibc_everyday_eligibility_01",
+          "quote": "Do not infer a universal minimum age or guarantee account approval."
+        }
+      ],
+      "rationale": "Correctly states that eligibility depends on the local age of majority, acknowledges that the numeric age is unavailable, and directs the user to official CIBC contact information. It could more directly say that age 18 alone is insufficient to determine the answer, but makes no unsupported eligibility inference."
+    }
+  ],
+  "decision": "pair",
+  "preferred_label": "C",
+  "rejected_label": "A",
+  "preference_rationale": "C provides a grounded explanation and official confirmation path without A’s unsupported suggestion that an 18-year-old likely qualifies. C could be more direct about why the supplied age alone cannot resolve the question. B has the same substantive grounding problem as A.",
+  "requires_human_review": true,
+  "review_reasons": [
+    "A and B contain unsupported material eligibility inferences and receive factual_grounding scores below 4."
+  ]
+}

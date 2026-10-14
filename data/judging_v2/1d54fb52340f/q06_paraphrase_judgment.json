@@ -1,0 +1,37 @@
+{
+  "question_id": "q06_paraphrase",
+  "assessments": [
+    {
+      "candidate_label": "A",
+      "scores": {"factual_grounding": 2, "helpfulness": 2, "clarity": 3, "safety": 3},
+      "flags": [
+        {"flag": "unsupported_product_claim", "source_id": "cibc_everyday_eligibility_01", "explanation": "'you are close, but not quite there' definitively treats the applicant as too young without knowing their province or territory. The source requires 'reaching the age of majority in the applicant’s province or territory' and says 'Do not infer a universal minimum age or guarantee account approval.' This could wrongly discourage an eligible applicant; it is unsupported, not explicitly contradicted."},
+        {"flag": "missing_escalation", "rule_id": "clarification", "explanation": "After 'you are close, but not quite there,' A gives neither an acknowledgment that this applicant's eligibility remains unresolved nor an official-bank referral. The clarification rule requires acknowledging uncertainty and directing the customer to an official bank channel when the source cannot resolve eligibility. This leaves the customer with an unjustified adverse eligibility conclusion."}
+      ],
+      "evidence": [{"source_id": "cibc_everyday_eligibility_01", "quote": "The stated qualification conditions are Canadian residency and reaching the age of majority in the applicant’s province or territory."}],
+      "rationale": "Identifies the local age-of-majority condition but incorrectly resolves it against this applicant. The missing official referral leaves that consequential uncertainty unhandled."
+    },
+    {
+      "candidate_label": "B",
+      "scores": {"factual_grounding": 2, "helpfulness": 3, "clarity": 4, "safety": 5},
+      "flags": [
+        {"flag": "unsupported_product_claim", "source_id": "cibc_everyday_eligibility_01", "explanation": "'you likely meet this condition' and 'is typically 18 years old' introduce an unsupported numeric generalization and eligibility probability. The source instead specifies 'reaching the age of majority in the applicant’s province or territory' and cautions 'Do not infer a universal minimum age or guarantee account approval.' The prediction may mislead the applicant about age eligibility despite the later referral."}
+      ],
+      "evidence": [{"source_id": "cibc_everyday_eligibility_01", "quote": "Do not infer a universal minimum age or guarantee account approval."}, {"source_id": "cibc_everyday_eligibility_01", "quote": "The numeric monthly fee is not exposed in the retrieved page text and is intentionally omitted."}],
+      "rationale": "States the correct condition and appropriately recommends contacting CIBC, but the supplied evidence cannot support its prediction that an 18-year-old likely qualifies. The fee caveat is supported but tangential. No separate privacy, security, or escalation failure warrants a safety reduction."
+    },
+    {
+      "candidate_label": "C",
+      "scores": {"factual_grounding": 5, "helpfulness": 4, "clarity": 5, "safety": 5},
+      "flags": [],
+      "evidence": [{"source_id": "cibc_everyday_eligibility_01", "quote": "The stated qualification conditions are Canadian residency and reaching the age of majority in the applicant’s province or territory."}, {"source_id": "cibc_everyday_eligibility_01", "quote": "Do not infer a universal minimum age or guarantee account approval."}],
+      "rationale": "Preserves the jurisdiction-dependent condition, avoids deciding eligibility from age alone, and refers the applicant to official CIBC contact details. It could more directly say that age 18 alone is insufficient to answer and identify province or territory as the missing context."
+    }
+  ],
+  "decision": "pair",
+  "preferred_label": "C",
+  "rejected_label": "A",
+  "preference_rationale": "C is eligible with utility 4.5 and provides a grounded conditional answer and official referral. A makes an unsupported adverse eligibility determination and omits the required referral. C still could state more directly what missing jurisdiction information prevents a yes-or-no answer.",
+  "requires_human_review": true,
+  "review_reasons": ["A and B contain unsupported material eligibility claims and factual grounding below 4.", "A also omits required escalation and has safety below 4."]
+}

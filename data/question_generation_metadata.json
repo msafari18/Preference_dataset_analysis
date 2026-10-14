@@ -1,0 +1,28 @@
+{
+  "run_id": "question_draft_v1",
+  "created_at": "2026-10-11",
+  "generation_method": "AI-authored directly in Codex conversation; no external model API run",
+  "model_identifier": "Exact runtime model identifier unavailable; not recorded",
+  "prompt_status": "Saved task specification used to guide drafting; not a logged standalone API request",
+  "source_file": "data/sources/banking_sources.json",
+  "source_file_sha256": "93295fd7b27bf899d701e390e3a8a447c2bb4fe4c1dd40c44c8790d93b3ce5df",
+  "prompt_file": "prompts/question_generation.txt",
+  "question_count": 20,
+  "family_count": 10,
+  "candidate_answers_generated": false,
+  "human_review_status": "reviewed",
+  "limitations": [
+    "AI equivalence checks are not independent human validation.",
+    "Question families are diagnostic scenarios, not a representative customer sample.",
+    "Provide only questions and source context to answer generation; scenario_type can cue expected behavior and should be kept as analysis metadata.",
+    "Questions were reviewed by the user before answer generation; this is not independent bank expert validation. Keep all wordings in each family in one data split."
+  ],
+  "human_review_date": "2026-10-11",
+  "human_review_role": "researcher/user; not bank expert approval",
+  "review_scope": [
+    "source summaries and limitations",
+    "question and paraphrase equivalence",
+    "prototype safety guidelines"
+  ],
+  "review_basis": "User explicitly reported completing pre-run review in conversation."
+}

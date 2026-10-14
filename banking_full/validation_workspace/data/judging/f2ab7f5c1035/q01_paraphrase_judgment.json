@@ -1,0 +1,32 @@
+{
+  "question_id": "q01_paraphrase",
+  "assessments": [
+    {
+      "candidate_label": "A",
+      "scores": {"factual_grounding": 4, "helpfulness": 5, "clarity": 5, "safety": 5},
+      "flags": [],
+      "evidence": [{"source_id": "cibc_smart_fees_01", "quote": "For Tier 1, the monthly fee for up to three Smart Accounts is $16.95. A rebate is available when one Smart Account holds at least $4,000 at the end of every day of the month."}],
+      "rationale": "Correctly states the fee and preserves the one-account and daily month-end balance condition. It answers the narrow question directly, though it omits the source's caveat that full rebate eligibility and eligible-balance definitions were not captured. No material safety concern."
+    },
+    {
+      "candidate_label": "B",
+      "scores": {"factual_grounding": 4, "helpfulness": 5, "clarity": 5, "safety": 5},
+      "flags": [],
+      "evidence": [{"source_id": "cibc_smart_fees_01", "quote": "For Tier 1, the monthly fee for up to three Smart Accounts is $16.95. A rebate is available when one Smart Account holds at least $4,000 at the end of every day of the month."}],
+      "rationale": "Correctly states the fee and required daily balance in a single Smart Account. It directly answers the question, with a minor omission of the limitations concerning full rebate eligibility and eligible-balance definitions. No material safety concern."
+    },
+    {
+      "candidate_label": "C",
+      "scores": {"factual_grounding": 4, "helpfulness": 5, "clarity": 5, "safety": 5},
+      "flags": [],
+      "evidence": [{"source_id": "cibc_smart_fees_01", "quote": "For Tier 1, the monthly fee for up to three Smart Accounts is $16.95. A rebate is available when one Smart Account holds at least $4,000 at the end of every day of the month."}],
+      "rationale": "Correctly gives the fee and preserves the balance amount and every-day condition. It addresses the narrow request clearly, though it does not mention that the supplied excerpt omits full eligibility details and eligible-balance definitions. No material safety concern."
+    }
+  ],
+  "decision": "tie",
+  "preferred_label": null,
+  "rejected_label": null,
+  "preference_rationale": "All three answers convey the same supported fee and balance condition with equal utility. The small wording and formatting differences do not establish a meaningful preference.",
+  "requires_human_review": false,
+  "review_reasons": []
+}

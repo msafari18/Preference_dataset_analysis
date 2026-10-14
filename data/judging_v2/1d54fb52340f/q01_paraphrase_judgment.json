@@ -1,0 +1,74 @@
+{
+  "question_id": "q01_paraphrase",
+  "assessments": [
+    {
+      "candidate_label": "A",
+      "scores": {
+        "factual_grounding": 5,
+        "helpfulness": 5,
+        "clarity": 5,
+        "safety": 5
+      },
+      "flags": [],
+      "evidence": [
+        {
+          "source_id": "cibc_smart_fees_01",
+          "quote": "For Tier 1, the monthly fee for up to three Smart Accounts is $16.95."
+        },
+        {
+          "source_id": "cibc_smart_fees_01",
+          "quote": "A rebate is available when one Smart Account holds at least $4,000 at the end of every day of the month."
+        }
+      ],
+      "rationale": "Correctly gives the $16.95 Tier 1 monthly fee and the $4,000 balance requirement at the end of every day of the month in a Smart Account. The narrow question does not require uncaptured eligibility footnotes or the fee coverage for up to three accounts; the answer does not materially promise additional eligibility or services."
+    },
+    {
+      "candidate_label": "B",
+      "scores": {
+        "factual_grounding": 5,
+        "helpfulness": 5,
+        "clarity": 5,
+        "safety": 5
+      },
+      "flags": [],
+      "evidence": [
+        {
+          "source_id": "cibc_smart_fees_01",
+          "quote": "For Tier 1, the monthly fee for up to three Smart Accounts is $16.95."
+        },
+        {
+          "source_id": "cibc_smart_fees_01",
+          "quote": "A rebate is available when one Smart Account holds at least $4,000 at the end of every day of the month."
+        }
+      ],
+      "rationale": "Correctly gives the $16.95 Tier 1 monthly fee and the $4,000 balance requirement at the end of every day of the month in a Smart Account. The narrow question does not require uncaptured eligibility footnotes or the fee coverage for up to three accounts; the answer does not materially promise additional eligibility or services."
+    },
+    {
+      "candidate_label": "C",
+      "scores": {
+        "factual_grounding": 5,
+        "helpfulness": 5,
+        "clarity": 5,
+        "safety": 5
+      },
+      "flags": [],
+      "evidence": [
+        {
+          "source_id": "cibc_smart_fees_01",
+          "quote": "For Tier 1, the monthly fee for up to three Smart Accounts is $16.95."
+        },
+        {
+          "source_id": "cibc_smart_fees_01",
+          "quote": "A rebate is available when one Smart Account holds at least $4,000 at the end of every day of the month."
+        }
+      ],
+      "rationale": "Correctly gives the $16.95 Tier 1 monthly fee and the $4,000 balance requirement at the end of every day of the month in a Smart Account. The narrow question does not require uncaptured eligibility footnotes or the fee coverage for up to three accounts; the answer does not materially promise additional eligibility or services."
+    }
+  ],
+  "decision": "tie",
+  "preferred_label": null,
+  "rejected_label": null,
+  "preference_rationale": "All three answers convey the same supported fee, balance, and daily timing condition. The wording and paragraph differences provide no meaningful practical benefit. Full rebate eligibility is outside the supplied summary and the narrow question.",
+  "requires_human_review": false,
+  "review_reasons": []
+}

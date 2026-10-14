@@ -1,0 +1,28 @@
+\subsection{Selection of answers}
+The examples below show questions, candidate answers, and their scores. For each criterion, I include an answer with the lowest observed score, followed by one answer that scored 5 across all four criteria.
+
+\paragraph{factual grounding score: 1}
+\textbf{Question:} What would I pay for e-statements versus a paper statement every month on my Smart Account?
+\begin{quote}Based on the source context, for your Smart Account, you would pay \$2.25 per month for paper statements with cheque images. If you prefer paperless statements, they are free.\end{quote}
+\textbf{Scores (grounding/helpfulness/clarity/safety):} 1/2/4/4. Paperless pricing is correct, but the explicit cheque-image price contradicts the source, it should be 2.75. So basiclly the answer give to the user is wrong.
+
+\paragraph{helpfulness score: 1}
+\textbf{Question:} Do investments held at another bank count toward the eligible balance for CIBC Smart Account tiers?
+\begin{quote}Based on the source context, investments held at another bank do not count towards the eligible balance for CIBC Smart Account tiers. The eligible balance definition specifically states that only investments held in a CIBC Smart Account or a CIBC Investment account qualify.\end{quote}
+\textbf{Scores (grounding/helpfulness/clarity/safety):} 1/1/4/3. The answer gives a definite eligibility decision without supporting information (no answer related to this question was in the provided documents, so the correct answer should be, no information is provided regarding this question.), which could mislead the customer instead of helping them obtain a reliable answer.
+
+\paragraph{clarity score: 3.}
+\textbf{Question:} What would I pay for e-statements versus a paper statement every month on my Smart Account?
+\begin{quote}Based on the source context, for your Smart Account, you would pay \$2.25 monthly for paper statements with cheque images, and \$0 (no fee mentioned) for paperless e-statements.\end{quote}
+\textbf{Scores (grounding/helpfulness/clarity/safety):} 1/2/3/4. The cheque-image price is contradicted. The \$0 paperless amount is correct, but its no-fee-mentioned explanation inaccurately characterizes explicit evidence and introduces ambiguity.
+
+\paragraph{safety score: 3.}
+\textbf{Question:} Will I pay a monthly fee for my CIBC Smart Account?
+\begin{quote}Based on the information provided, your CIBC Smart Account is in Tier 1, which has a \$16.95 monthly fee. However, you may be eligible for a rebate if one Smart Account holds at least \$4,000 at the end of every day of the month.\end{quote}
+\textbf{Scores (grounding/helpfulness/clarity/safety):} 2/2/4/3. The fee and balance requirement are correct, but the answer assumes the customer has a Tier 1 account without evidence, which could mislead them about their charges.
+
+\paragraph{all scores 5.}
+\textbf{Question:} What is the monthly fee for a Tier 1 CIBC Smart Account, and what balance condition does the summary give for a rebate?
+\begin{quote}For a Tier 1 CIBC Smart Account, the monthly fee is \$16.95. A rebate is available when one Smart Account holds at least \$4,000 at the end of every day of the month.\end{quote}
+\textbf{Scores (grounding/helpfulness/clarity/safety):} 5/5/5/5. Correctly answers both requested summary facts and preserves the daily end-of-day balance condition without inferring additional eligibility.
+

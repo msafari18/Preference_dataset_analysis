@@ -1,0 +1,316 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{booktabs,tabularx,array}
+\usepackage{amsmath}
+\usepackage[hidelinks]{hyperref}
+\usepackage{enumitem}
+\usepackage{placeins}
+\setlist{nosep}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+\title{Synthetic Preference Data for a Banking Assistant}
+\date{}
+\begin{document}
+\maketitle
+
+\section{Scope and research question}
+For this porject I chose to work on Problem 1: investigating methods for generating synthetic preferences suitable for reinforcement learning. A preference example commonly contains a question or conversation $x$, relevant context $c$, a preferred response $y^+$, and a rejected response $y^-$. Synthetic generation can affect any of these components: questions, responses, or labels. Model-generated answers with human comparison labels therefore differ from answers labeled entirely by an AI judge. A hybrid dataset can mix human and AI labels or use humans to correct selected synthetic labels. None of these constructions implies that real customer conversations are available.
+In this report, I first provided a litrature review on generating synthetic preference data, and RL-based generation and LLM-augmented synthesis methods. The I porposed a pipeline for synthetic preference data generation. After that, I provided a protytpe of my proposed method on a small sample dataset, and then experiemnts to evaluate this method. 
+
+\section{Literature Review}
+\subsection{Preference data generation}
+The following studies explain how preference examples are collected or generated, the role of human feedback, and their limitations.
+
+\noindent\textbf{Reinforcement Learning from Human Feedback (RLHF).}
+Bai et al.\ \cite{rlhf} use human helpfulness and harmlessness comparisons to train preference models and optimize assistants with PPO. Collecting and updating labels is time-consuming, banking judgments may require specialists, and human factual checking can be incomplete.
+
+\noindent\textbf{Constitutional AI.}
+Constitutional AI \cite{cai} generates critiques and revisions for supervised training, then uses an LLM to label response pairs for RL. Humans supply behavioral principles and helpfulness comparisons, which are combined with AI harmlessness labels. Limitations include misinterpreted principles, missing product facts, a costly multi-stage pipeline, and no demonstrated banking suitability.
+
+\noindent\textbf{Reinforcement Learning from AI Feedback (RLAIF) and direct-RLAIF.}
+RLAIF \cite{rlaif} trains a reward model on AI comparisons, while direct-RLAIF uses LLM scores directly during RL. The study compares AI feedback with human feedback and reports comparable performance on its tasks. Both depend on judge reliability, prompts, and representative inputs; direct scoring avoids reward-model staleness but does not eliminate judge errors or guarantee lower cost.
+
+\noindent\textbf{UltraFeedback.}
+UltraFeedback \cite{ultra} samples answers from four models per instruction and uses GPT-4 to score instruction-following, truthfulness, honesty, and helpfulness with rationales. The described annotation is AI-based; human involvement is not specified in this summary. Diverse generators and detailed feedback add model calls, and the dataset does not include safety-oriented instructions establishing banking safety coverage.
+
+\noindent\textbf{West-of-N.}
+West-of-N \cite{west} uses a teacher preference model to select the best and worst sampled answers, then combines these pseudo-labels with original comparisons to train a student reward model. The initial comparisons may be human- or AI-labeled. It requires an existing preference model and comparisons; this is reward-model self-training rather than an RL update.
+
+\noindent\textbf{Self-Rewarding Language Models.}
+Yuan et al.\ \cite{selfreward} use one model to generate and judge answers, turning the highest- and lowest-scoring responses into pairs for iterative DPO. Human-authored answers and human-ranking-filtered evaluation targets ground the starting model. Shared answering/judging errors may reinforce themselves, repeated training is costly, and the rubric is not banking-specific; results also vary across benchmarks and response length increases.
+
+\subsection{Model fine-tuning techniques}
+Preference data can train an assistant either through a reward model or directly through a preference-based objective. In RLHF and RLAIF, human or AI comparisons first train a reward model, which scores generated responses during reinforcement learning, commonly using Proximal Policy Optimization (PPO) \cite{rlhf,rlaif}. Direct-RLAIF instead obtains rewards from an existing LLM during RL, removing separate reward-model training but requiring repeated judge calls \cite{rlaif}. Direct Preference Optimization (DPO) uses preferred/rejected pairs to update the assistant relative to a frozen reference model, without a separate reward model or an explicit PPO loop \cite{dpo}. DPO simplifies the training pipeline, while reward-model-based RL supports optimization using scores on newly generated responses; both depend on the quality and coverage of the feedback.
+\subsection{Safety studies}
+Since saftey is improtant in the bankin applications, I did a specific study on a few papers to see how they address saftey issues in producing preferenc set. Safety research examines both how harmful responses are identified and how models are trained to avoid them. Constitutional AI uses human-written principles to generate AI harmlessness preferences, combined with human helpfulness feedback \cite{cai}. PKU-SafeRLHF develops richer safety annotation: its v3 dataset separates helpfulness and harmlessness preferences and records safety status, 19 harm categories, and three severity levels, using AI assistance alongside human assessment and quality control \cite{pkusafe}. Together, these studies motivate explicit safety criteria and human oversight rather than treating helpfulness as a sufficient indicator of safety. However, ambiguous principles, judge errors, and human anchoring on AI suggestions can affect labels, and generic harm categories require adaptation and validation for banking.
+
+Safety-aware optimization also separates useful behavior from harmful behavior during training. Safe RLHF trains a helpfulness reward model and a harmfulness cost model, then applies a Lagrangian method to maximize helpfulness subject to an expected-cost constraint \cite{saferlhf}. This provides a way to manage the helpfulness--safety trade-off without relying solely on a fixed combined score. Its effectiveness nevertheless depends on the cost model and constraint specification; an average learned-cost constraint cannot guarantee that every response is safe. For the proposed banking workflow, these studies support recording safety independently, reviewing consequential failures, and evaluating helpfulness and harmfulness separately, while leaving bank-specific rules and acceptable risk levels to qualified reviewers.
+
+Table~\ref{tab:methods} summarizes the contributions and limitations of the reviewed approaches.
+\begin{table}[htbp]
+\footnotesize
+\centering
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.15}
+\begin{tabularx}{\textwidth}{@{}p{0.24\textwidth}YY@{}}
+\toprule
+Approach & Main contribution & Main limitation \\
+\midrule
+RLHF \cite{rlhf} & Human preference baseline & Annotation expense \\
+\midrule
+Constitutional AI \cite{cai} & Principle-guided revisions and comparisons & Principles do not verify facts \\
+\midrule
+Canonical RLAIF \cite{rlaif} & AI labels train a reward model & Judge errors propagate \\
+\midrule
+Direct-RLAIF \cite{rlaif} & LLM rewards during RL & Repeated scoring; no required pair dataset \\
+\midrule
+UltraFeedback \cite{ultra} & Diverse answers and structured scores & Generic rubric lacks banking safety \\
+\midrule
+West-of-N \cite{west} & Reward-model self-training & Requires a seed teacher; errors propagate \\
+\midrule
+Self-Rewarding \cite{selfreward} & Self-judging with iterative DPO & Correlated answering/judging errors \\
+\midrule
+DPO \cite{dpo} & Direct training on preference pairs & Cannot correct unreliable labels by itself \\
+\midrule
+PKU-SafeRLHF \cite{pkusafe} & Separate utility and detailed safety labels & Review effort; generic taxonomy \\
+\midrule
+Safe RLHF \cite{saferlhf} & Separate reward/cost optimization & Expected constraint is not a per-answer guarantee \\
+\bottomrule
+\end{tabularx}
+\caption{Contributions and limitations of the approaches retained in the literature review.}
+\label{tab:methods}
+\end{table}
+\FloatBarrier
+\section{Proposed method for Caia}
+\subsection{Explicit assumptions}
+\begin{itemize}
+\item Access to authoritative bank documents.
+\item Access to initial safety and escalation guidelines.
+\item Access to a starting Caia model for future training experiments.
+\item Limited availability of bank experts for human review.
+\end{itemize}
+
+\subsection{Prposed pipeline}
+The proposed method adapts UltraFeedback's generation of multiple candidate answers and structured AI judging \cite{ultra} to construct a small, traceable preference dataset for Caia using bank information and synthetic questions, with human review of flagged cases and a random sample of unflagged cases. The proposed methos is described below:
+
+\begin{center}
+\begin{tabular}{c}
+Bank documents and safety guidelines\\ $\downarrow$\\
+customer questions (real data/AI-generated/both)\\ $\downarrow$\\
+Meaning-preserving paraphrases, checked for equivalence\\ $\downarrow$\\
+Several Caia-generated answers per question\\ $\downarrow$\\
+AI preference judgments and safety flags\\ $\downarrow$\\
+Human review of flagged cases and a random sample\\ $\downarrow$\\
+Hybrid preference dataset for future Caia training\\ $\downarrow$\\
+DPO fine-tuning of Caia on the preference dataset
+\end{tabular}
+\end{center}
+Each component is explained in the following part. 
+\subsection{Explanation of the components}
+\paragraph{1. Bank-provided information.}
+The bank would provide:
+\begin{itemize}
+\item Authoritative product and service documents covering fees, eligibility conditions, and account procedures.
+\item Safety guidelines specifying prohibited advice and behavior.
+\item Privacy and security guidelines specifying information Caia must not request or disclose.
+\item Clarification guidelines specifying when Caia should ask for additional information.
+\item Escalation guidelines specifying when and how Caia should refer customers to an authorized bank channel or human representative.
+\end{itemize}
+These inputs establish the factual context and judging criteria. Using human-written behavioral guidance is motivated by Constitutional AI \cite{cai}; grounding responses in bank documents is my banking adaptation.
+
+\paragraph{2. Customer questions }
+This input can be real data gathered from the inital customers or it can be AI-generated, or both. An LLM uses bank documents and scenario types to generate fictional customer questions, each linked to its source context and scenario tag. Inspired by UltraFeedback's emphasis on diversity \cite{ultra}, questions cover routine, ambiguous, and safety-sensitive requests and are checked for answerability and unintended assumptions.
+
+\paragraph{Additional idea: Question paraphrasing and equivalence checks.}
+Before answer generation, ask a LLM to rewrite each original question using different natural wording, such as conversational phrasing or a minor typo. Preserve the intent, customer facts, scope, and requested action. For example, ``What is the monthly fee for this account?'' can become ``How much would this account cost me each month?''. Manually check each pair and regenerate or exclude invalid rewrites. Store the original and paraphrase under the same tag, with the same source context. If we generate and judge answers independently for each wording the wording sensitivity remains observable.
+
+Paraphrasing is my proposed data-augmentation extension, motivated by customer wording variation. The main goal is to measure consistency across equivalent questions, and increase the robustness. 
+
+\paragraph{3. Candidate answer generation.}
+For each question, an Caia receives the same source context and generates three candidate answers. The output is a small answer set with generator settings recorded. This is inspired by UltraFeedback's multiple-candidate construction \cite{ultra}, but in their approach, they have multipe differnt models that are genrating the multipe answers. However here, we only have Caia, so it is not clear if getting multiple asnwers from one model would give us enough diversity. This is need to be tested, but we can still use multiple version of the same model to generate more diverse answers.
+
+\paragraph{4. AI judging.}
+The LLM judge receives the following inputs:
+\begin{enumerate}
+\item The customer question.
+\item The relevant bank documents or excerpts, including their limitations.
+\item The candidate answers, presented in randomized order.
+\item The bank's safety, privacy, and escalation guidelines.
+\item The scoring rubric defining the evaluation criteria and score levels.
+\end{enumerate}
+Using these inputs, the judge returns scores, a preference, a brief evidence-based rationale, and safety flags. This adapts UltraFeedback's structured feedback \cite{ultra} and AI preference labeling \cite{rlaif,cai}, with separate helpfulness and safety assessments \cite{pkusafe,saferlhf}. Candidate order is randomized, and flagged or uncertain judgments are sent for human review.
+
+The scoring rubric is the set of criteria and score definitions supplied to the judge. Table~\ref{tab:scoring-rubric} defines four dimensions on a 1--5 scale, with 5 indicating the strongest performance; the criteria draw on UltraFeedback and separate helpfulness/safety annotation \cite{ultra,pkusafe}.
+
+\begin{table}[htbp]
+\small
+\begin{tabularx}{\textwidth}{@{}p{0.18\textwidth}YY@{}}
+\toprule
+Criterion & Low anchor (1) & High anchor (5)\\
+\midrule
+Factual grounding & Material claim contradicts the supplied source or is unsupported & Material claims are supported; missing information is acknowledged\\
+Helpfulness & Misses the request or gives unusable guidance & Addresses the request with relevant, actionable information within scope\\
+Clarity & Confusing, misleading, or difficult to follow & Clear, concise, and understandable to a customer\\
+Safety and policy adherence & Serious privacy, security, or policy failure & Follows supplied boundaries, handles uncertainty, and escalates appropriately\\
+\bottomrule
+\end{tabularx}
+\caption{Proposed banking judging rubric. These adapted criteria require reviewer calibration.}
+\label{tab:scoring-rubric}
+\end{table}
+\FloatBarrier
+
+The judge supports factual assessments with source evidence and flags unsupported claims, privacy/security failures. Since the factual-grounding and safety are the most important criterias scores below 4, are being falgged and will be needed to be judged by human. For the answers that have factual and safty score of 5, the final score is the mean of helpfulness and clarity; retain a pair only when a meaningful preference exists. The main reason behind this design is we do not want an asnwer that is helpfull but not safe to get high score, so we put a hard threshold on safety frist.
+
+\paragraph{5. Additional idea: Selective human review and random audit.}
+A knowledgeable reviewer confirms or corrects flagged and uncertain judgments using the same sources and rubric, and audits a random sample of unflagged cases to detect missed errors. Combining AI labels with human corrections creates a hybrid preference-labeling approach suited to banking's need for safety oversight. Human feedback is established in prior work \cite{rlhf,pkusafe}; selective review plus random auditing is my proposed adaptation, rather than a claim of novelty.
+
+\paragraph{5.1. Additional idea: Optional part -- Judge-feedback library.}
+Human review can provide an additional input to the judge: examples of correct judgments. For a reviewed case, the human may record the candidate answer, corrected scores or preference, and a short explanation supported by the bank documents or guidelines. Relevant examples are then supplied as \textbf{input 6: human-reviewed judgment examples} in future judge requests. Thus, human review both corrects the preference dataset and provides guidance intended to help the judge avoid similar mistakes. This optional step can be skipped if the reviewer does not provide examples; it updates the prompt rather than model weights and is not implemented in the prototype.
+
+\begin{center}
+\begin{tabular}{c}
+AI judgment $\rightarrow$ human review $\rightarrow$ corrected dataset label\\
+\hspace{1em}$\downarrow$ optional explanatory feedback\\
+Validated judge-feedback library\\ $\downarrow$\\
+Input 6: human-reviewed judgment examples\\
+(or an explicitly reviewed rubric revision)
+\end{tabular}
+\end{center}
+
+\paragraph{6. Dataset finalization.}
+For each question, retain at most one preferred/rejected answer pair with its source context, scores, rationale, and label origin (AI or human-reviewed). Keep question-family identifiers to link paraphrases and record model, prompt, and source versions for traceability. Human corrections replace the provisional labels while the original judgments are preserved. Exclude or defer cases with no acceptable preferred answer, no meaningful preference, or unresolved uncertainty. Combining AI labels and human corrections produces a hybrid preference dataset \cite{cai,west}.
+
+\paragraph{7. DPO fine-tuning.}
+Use the finalized pairs to fine-tune Caia with Direct Preference Optimization (DPO), which increases the relative likelihood of preferred answers over rejected answers using a frozen reference model, without a separate reward model or PPO loop \cite{dpo}. Keep question families together when splitting training and evaluation data, and assess the trained model on held-out banking questions. This completes the proposed pipeline; DPO was not run in the prototype because the dataset is too small for meaningful fine-tuning conclusions.
+
+% \subsection{Assumptions and boundaries}
+% \begin{enumerate}
+% \item \textbf{Information access:} a small, usable collection of authoritative documents and explicit safety/escalation guidance is available. For a public-data pilot, record the source and retrieval date and describe it as a proxy; public availability does not mean internal bank approval.
+% \item \textbf{Source coverage:} documents cover the selected questions. When they do not, asking for clarification or escalating may be the correct response; the model must not invent the missing policy.
+% \item \textbf{Model access:} there is permission and budget to call an answering model and one judge. The prototype need not access Caia, but Caia access and training permission are necessary for later model-specific claims.
+% \item \textbf{Human capacity:} limited reviewer time is available. A bank specialist is needed to validate bank-specific policy decisions; self-review can demonstrate workflow only. Disputed labels remain unresolved until qualified review.
+% \item \textbf{No private-data dependency:} the initial study uses fictional scenarios and source excerpts, with no assumption of customer logs, account data, or personally identifying information.
+% \item \textbf{No seed preference requirement:} no existing preference dataset, trained reward model, or verified reference-answer bank is assumed. This is why West-of-N and controlled edits are postponed.
+% \item \textbf{Limited representativeness:} the small scenario set is deliberately varied but not statistically representative of customer traffic. Sampling from one model also limits response diversity.
+% \item \textbf{Imperfect labels:} AI and human judgments can both be wrong. Separate safety scores, source checks, and random audits reduce observable errors without guaranteeing their elimination.
+% \item \textbf{Training readiness:} before training, split data by scenario or document family, keeping each original question, its paraphrases, all candidates, and near-duplicate questions together. Paraphrases must preserve meaning; reviewer checks are assumed to establish equivalence for the pilot. A separate held-out evaluation set must not be used for prompt or threshold tuning.
+% \item \textbf{Cost boundary:} generation, judging, and review are offline costs. This proposal adds no mandatory live judge to Caia's serving path and establishes no measured serving-cost savings.
+% \end{enumerate}
+
+\section{Prototyping}
+\paragraph{Purpose and use of AI.}
+I implemented the proposed method on a very small dataset. This is just to test whether the proposed data-construction workflow can be done with limited time and a Colab T4 GPU. Since I did not have access to the actuall models and the questions dataset and the bankind information, I used OpenAI GPT-6.1 Sol for AI-assisted preparation of the reference summaries and fictional questions. The prototype used the following materials and models: 
+\begin{enumerate}
+\item Public CIBC pages, summarized with assistance from OpenAI GPT-6.1 Sol, as reference information.
+\item A researcher-defined prototype safety guideline.
+\item Fictional customer questions and their paraphrases generated with OpenAI GPT-6.1 Sol.
+\item Llama 3.2 3B Instruct as a substitute for Caia to generate candidate answers.
+\end{enumerate}
+
+\paragraph{Source material and safety guidance.}
+To have some banking information and saftey guidlines for the model to answer the question and also for the LLM judge to judge the answer I used the following. Four public CIBC Canada pages were selected, covering Smart Account fees, Everyday Chequing features and eligibility, account opening and joint-account services, and impersonator scams. Relevant information was saved as AI-assisted paraphrased summaries with source identifiers, titles, URLs, retrieval dates, and explicit coverage limitations. A separate researcher-defined safety guideline specifies factual grounding, credential protection, privacy, capability limits, clarification, and fraud escalation. Public information substitutes for hypothetical bank-provided documents. These materials are incomplete and not bank-approved; they are used just to run the analysis.
+
+\paragraph{Questions, paraphrases, and input review.}
+Again, since I did not have access to any relevant questions for banking, OpenAI GPT-6.1 Sol was used to draft ten fictional questions: four routine, two ambiguous, two requiring information absent from the supplied context, and two safety scenarios. One meaning-preserving paraphrase was created for each, giving twenty wordings in ten question families. Each wording links to its relevant source identifiers.
+
+\paragraph{Answering model and generation.}
+The completed run used \texttt{meta-llama/Llama-3.2-3B-Instruct} as a small-model substitute for Caia. Each request supplied the question, linked source summaries and limitations, and answering safety rules. Scenario labels and judge-only instructions were excluded to avoid cueing expected judgments. Three answers were sampled independently per question (number of questions = 10, each have one paraphrased version, so total s 20 questions). So three answers per questions produced 60 candidate records; answers were not deliberately prompted to be good or bad.
+
+\paragraph{AI judging.}
+To avoid hosting a larger judge model on the Colab T4, I used OpenAI GPT-6.1 Sol through separate Codex agent sessions. Each rubric version used twenty agents, one per question wording, with each agent evaluating its three candidate answers. The agents scored factual grounding, helpfulness, clarity, and safety from 1 to 5 using the scoring rubric in Table~\ref{tab:scoring-rubric}. Sessions had separate contexts but used the same model; the GPT-6.1 Sol name is user-reported, as the saved execution metadata did not expose an exact judge model identifier.
+
+\paragraph{Artifacts produced.}
+All the produced files are explained below and are attached to the report: 
+\begin{itemize}
+\item \texttt{data/sources/banking\_sources.json} and \texttt{.jsonl}: four source summaries with provenance and limitations; \texttt{SOURCE\_NOTES.txt} documents scope and collection assumptions.
+\item \texttt{data/sources/prototype\_safety\_guideline.json}: versioned prototype behavioral rules and their stated basis.
+\item \texttt{data/questions.json} and \texttt{.jsonl}: twenty questions with family identifiers, source links, scenario tags, and researcher review status.
+\item \texttt{prompts/question\_generation.txt} and \texttt{data/question\_generation\_metadata.json}: the drafting specification and disclosed generation/review provenance.
+\item \texttt{notebooks/generate\_llama\_candidates.ipynb}: Colab generation workflow, with a two-wording smoke mode and full-run mode; automatic structural validation and judge-input preparation were subsequently added.
+\item \texttt{banking\_full/candidates.jsonl}: sixty candidate answers with question and family IDs, exact input messages, model/revision, sampling settings, seeds, token counts, timing, and token-limit indicators.
+\item \texttt{banking\_full/generation\_metadata.json}: shared model revision, input hashes, run fingerprint, GPU, installed package versions, and generation configuration.
+\item Per-question \texttt{judgment.json} files and consolidated \texttt{ai\_judgments.jsonl}: scores, evidence-based explanations, safety flags, and proposed preferences.
+\item \texttt{human\_review\_queue.json}: flagged cases and randomly selected cases for human audit.
+\end{itemize}
+The notebook saves candidate answers and exports them as a ZIP. Structural validation passed for 20 questions and 60 answers; this confirms file integrity, not factual correctness, safety, or preference quality. Judging and human review are required before finalizing training pairs.
+
+Because no real customer data or bank-provided preference dataset was available, the prototype used a small synthetic dataset. The resulting preference comparisons are insufficient to support meaningful conclusions about fine-tuning performance. Accordingly, DPO fine-tuning was not run; its experimental design and validation procedure are described in the designed-experiments section.
+
+\section{Results}
+Twenty separate judge sessions evaluated sixty Llama-generated answers using the supplied context and scoring rubric. The judges proposed twelve preference pairs, identified five ties, and found three questions with no acceptable answer. Thirteen questions were flagged for review; a random audit added two of the seven unflagged questions, giving fifteen cases requiring human review.
+
+\begin{itemize}
+\item \textbf{Proposed pair:} one acceptable answer is selected as preferred over a meaningfully worse answer, subject to any required human review.
+\item \textbf{Tie:} the judge finds no meaningful preference between the leading answers.
+\item \textbf{No acceptable answer:} none of the three answers meets the factual-grounding and safety requirements for a preferred answer.
+\end{itemize}
+
+\input{artifacts/report_examples_v1.tex}
+
+The \href{https://github.com/msafari18/Preference_dataset_analysis}{accompanying repository} provides the files and step-by-step instructions for reproducing the workflow.
+
+\section{Designed experiments for fine-tuning and RL performance}
+In this section I propose experiments for Problem 1's third task; they have not been run, because I did not have meaningful amount of data to do proper finetuning. The design draws on DPO's comparison of trained models against baselines \cite{dpo}, RLAIF's human evaluation of helpfulness and safety \cite{rlaif}, West-of-N's testing of reward models and generated answers \cite{west}, and Safe RLHF's separate assessment of helpfulness and harm \cite{saferlhf}. Banking-specific metrics and data splits are proposed adaptations.
+
+The validation design addresses four questions: (i) does DPO training on synthetic preferences improve the starting assistant; (ii) do selective human corrections improve outcomes over AI-only labels; (iii) does reward-model-plus-PPO training outperform DPO on the same preference data; and (iv) does updating the reward model improve subsequent PPO training? These experiments test possible benefits rather than assume them.
+
+\subsection{Question 1: Does synthetic preference training improve the assistant?}
+\textbf{Comparison.} Compare the unchanged starting assistant with the same model fine-tuned using DPO on AI-labeled synthetic preference pairs. Keep the starting checkpoint, source context, and response-generation settings fixed. DPO motivates this comparison against a starting policy \cite{dpo}. Complete data checks and expand beyond the twelve provisional pairs before training.
+
+\textbf{Validation.} Split data into training, development, and test sets, keeping each question and its paraphrases together. Select training settings on development data and evaluate on new question families excluded from rubric development. Use anonymized, randomized-order comparisons assessed by human reviewers, following RLAIF's external policy evaluation \cite{rlaif}; banking policy judgments require qualified reviewers. An independent AI evaluator may supplement human assessment, as in DPO \cite{dpo}, but the training judge alone cannot establish improvement.
+
+\textbf{Measures.} Report helpfulness wins, ties, and losses against the starting model; rates of material unsupported or contradicted claims; and safety violations separately from helpfulness, following RLAIF and Safe RLHF \cite{rlaif,saferlhf}. Also assess appropriate clarification/escalation, unnecessary refusal, and factual/safety consistency across paraphrases. These banking-specific measures are proposed adaptations. 
+
+\textbf{Robustness and independent banking evaluation.} Test each model on new question families and meaning-preserving paraphrases excluded from training and rubric development. Check whether equivalent questions receive factually correct answers with consistent safety behavior. Where available, banking experts independent of training-label creation should assess routine and safety-sensitive cases against approved documents and policies, measuring helpfulness, factual errors, safety violations, and appropriate escalation. These tests evaluate robustness and banking suitability rather than add training objectives.
+
+\subsection{Question 2: Does selective human correction improve AI-only labels?}
+\textbf{Comparison.} Build two datasets from the same candidate answers: AI-only preferences and hybrid preferences with selected labels corrected by humans. Train separate DPO models from the same checkpoint using the same settings. On the common usable subset, match questions and pair counts to examine the effect of label corrections. Separately report the full pipeline's retained-pair counts and review effort, since human review may also change which pairs are included. If reviewers write replacement answers, analyze that separately from label correction. AI versus human feedback comparisons in RLAIF and hybrid feedback in Constitutional AI motivate this study \cite{rlaif,cai}; the selective-review design is our adaptation.
+
+\textbf{Validation and measures.} Evaluate both models on the same untouched test set using the measures in Question 1. Compare factual errors, helpfulness, and safety violations, together with reviewer minutes and the fraction of comparisons reviewed. Assess AI--human label agreement separately on flagged cases and the random audit; targeted cases cannot estimate overall judge accuracy. Record missed issues found in the audit with counts and uncertainty. This tests whether human correction improves model outcomes at an acceptable review cost, without assuming that it does.
+
+\subsection{Question 3: Does reward-model-plus-PPO training outperform DPO?}
+\textbf{Comparison.} Train two assistants from the same checkpoint using the same finalized preference dataset. One uses DPO directly on the preferred/rejected pairs. For the other, train a reward model on those pairs, then use its scores to optimize the assistant with KL-regularized PPO. This compares the complete training approaches, not the effect of adding a reward model alone. DPO provides the direct preference-training baseline \cite{dpo}; RLHF and canonical RLAIF provide the reward-model-plus-RL approach \cite{rlhf,rlaif}.
+
+\textbf{Validation.} Evaluate both assistants on the same held-out banking questions using the independent helpfulness, factual-grounding, and safety assessments in Question 1. Keep source context and evaluation settings fixed, and select training settings on development data. Report compute and data budgets, including PPO rollout generation and reward-model training, since equal preference data does not imply equal computational cost. This tests whether any quality benefit justifies the additional training complexity.
+
+\subsection{Question 4: Does updating the reward model improve PPO training?}
+\textbf{Comparison.} Begin with the same reward model and assistant checkpoint, then compare two PPO training runs. One keeps the reward model fixed. The other periodically generates answers from the current assistant, obtains new preference labels under the same judging and review procedure, and retrains the reward model before continuing PPO. Online preference-model updates in RLHF motivate this experiment \cite{rlhf}; canonical versus direct-RLAIF also highlights the problem of scoring newer policy outputs with a reward model trained on earlier responses \cite{rlaif}. Updating a learned reward model is distinct from direct-RLAIF, which scores outputs with an existing LLM without training a separate reward model.
+
+\textbf{Validation.} Choose the update schedule and feedback budget using development data. Check whether the updated reward model better matches human preferences and whether its assistant gives better answers on held-out banking questions \cite{west}. Compare against a fixed reward model given the same feedback budget, and report helpfulness, safety, and additional cost---not just training rewards.
+
+All four experiments remain proposed. Training settings, test-set size, and acceptable safety tolerances must be specified before final evaluation; no banking performance gains are claimed from the completed data-construction prototype.
+
+\section{Future work}
+Beyond the validation described above, the method should be extended with bank-approved scenarios and versioned source documents, so examples remain traceable when product information or policies change. Additional checked paraphrases would broaden customer wording coverage and expand the dataset.
+
+\paragraph{Additional idea: Diverse generators and controlled corruptions.}
+Generate candidate answers using several models or configurations to broaden the errors and response styles represented, following UltraFeedback \cite{ultra}. Complement these with targeted corruptions of expert-verified answers, such as changing a fee or removing an eligibility condition, following SYNFAC-EDIT \cite{synfac}. Verify that each edit actually makes the answer worse before assigning a preference. This extends our single-model generation approach using established techniques; it requires verified reference answers and is not a claim of research novelty.
+
+
+\paragraph{Paraphrase-consistency training objective.}
+An additional training objective could encourage Caia to produce semantically consistent answers to meaning-equivalent questions. Unlike the paraphrase augmentation already proposed, this would explicitly penalize inconsistency during fine-tuning. A conceptual objective is
+\[
+\mathcal{L}_{\mathrm{total}} = \mathcal{L}_{\mathrm{DPO}}
++ \lambda\,\mathcal{L}_{\mathrm{consistency}},
+\qquad
+\mathcal{L}_{\mathrm{consistency}} = 1-\cos\bigl(E(a),E(a')\bigr),
+\]
+where $a$ and $a'$ answer equivalent questions, $E$ represents answer embeddings, and $\lambda$ controls the consistency weight. This requires a differentiable training formulation: embedding externally generated answer strings alone cannot provide gradients to Caia. Similarity must also preserve factual and safety supervision, since two equally wrong answers can be similar. Compare DPO alone with DPO plus this objective on the same training data and unseen question families. This is a proposed extension, not an implemented result or an established claim of novelty.
+
+\begin{thebibliography}{99}
+\bibitem{rlhf} Y. Bai et al. \emph{Training a Helpful and Harmless Assistant with Reinforcement Learning from Human Feedback}. 2022. \href{https://arxiv.org/abs/2204.05862v1}{arXiv:2204.05862v1}.
+\bibitem{cai} Y. Bai et al. \emph{Constitutional AI: Harmlessness from AI Feedback}. 2022. \href{https://arxiv.org/abs/2212.08073v1}{arXiv:2212.08073v1}.
+\bibitem{rlaif} H. Lee et al. \emph{RLAIF vs. RLHF: Scaling Reinforcement Learning from Human Feedback with AI Feedback}. ICML 2024. \href{https://arxiv.org/abs/2309.00267v3}{arXiv:2309.00267v3}.
+\bibitem{ultra} G. Cui et al. \emph{UltraFeedback: Boosting Language Models with Scaled AI Feedback}. ICML 2024. \href{https://arxiv.org/abs/2310.01377v2}{arXiv:2310.01377v2}.
+\bibitem{synfac} P. Mishra et al. \emph{SYNFAC-EDIT: Synthetic Imitation Edit Feedback for Factual Alignment in Clinical Summarization}. EMNLP 2024. \href{https://arxiv.org/abs/2402.13919v4}{arXiv:2402.13919v4}.
+\bibitem{redteam} E. Perez et al. \emph{Red Teaming Language Models with Language Models}. EMNLP 2022. \href{https://arxiv.org/abs/2202.03286}{arXiv:2202.03286}.
+\bibitem{west} A. Pace et al. \emph{West-of-N: Synthetic Preferences for Self-Improving Reward Models}. 2024. \href{https://arxiv.org/abs/2401.12086v2}{arXiv:2401.12086v2}.
+\bibitem{selfreward} W. Yuan et al. \emph{Self-Rewarding Language Models}. 2024. \href{https://arxiv.org/abs/2401.10020v3}{arXiv:2401.10020v3}.
+\bibitem{pkusafe} J. Ji et al. \emph{PKU-SafeRLHF: Towards Multi-Level Safety Alignment for LLMs with Human Preference}. Version 3, 2025. \href{https://arxiv.org/abs/2406.15513v3}{arXiv:2406.15513v3}.
+\bibitem{saferlhf} J. Dai et al. \emph{Safe RLHF: Safe Reinforcement Learning from Human Feedback}. 2023. \href{https://arxiv.org/abs/2310.12773v1}{arXiv:2310.12773v1}.
+\bibitem{dpo} R. Rafailov et al. \emph{Direct Preference Optimization: Your Language Model is Secretly a Reward Model}. 2023. \href{https://arxiv.org/abs/2305.18290v3}{arXiv:2305.18290v3}.
+\end{thebibliography}
+\end{document}

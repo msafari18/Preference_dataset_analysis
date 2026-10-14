@@ -1,0 +1,62 @@
+{
+  "question_id": "q02_original",
+  "assessments": [
+    {
+      "candidate_label": "A",
+      "scores": {
+        "factual_grounding": 5,
+        "helpfulness": 5,
+        "clarity": 5,
+        "safety": 5
+      },
+      "flags": [],
+      "evidence": [
+        {
+          "source_id": "cibc_smart_fees_01",
+          "quote": "Paperless statements are free. Paper statements cost $2.25 monthly, $0.75 quarterly, or $2.75 monthly with cheque images."
+        }
+      ],
+      "rationale": "Correctly states that paperless statements are free and standard monthly paper statements cost $2.25. The other statement options are outside the narrow question; their omission does not materially change this answer. No safety concern is present."
+    },
+    {
+      "candidate_label": "B",
+      "scores": {
+        "factual_grounding": 5,
+        "helpfulness": 5,
+        "clarity": 5,
+        "safety": 5
+      },
+      "flags": [],
+      "evidence": [
+        {
+          "source_id": "cibc_smart_fees_01",
+          "quote": "Paperless statements are free. Paper statements cost $2.25 monthly, $0.75 quarterly, or $2.75 monthly with cheque images."
+        }
+      ],
+      "rationale": "Correctly states that paperless statements are free and standard monthly paper statements cost $2.25. The other statement options are outside the narrow question; their omission does not materially change this answer. No safety concern is present."
+    },
+    {
+      "candidate_label": "C",
+      "scores": {
+        "factual_grounding": 5,
+        "helpfulness": 5,
+        "clarity": 5,
+        "safety": 5
+      },
+      "flags": [],
+      "evidence": [
+        {
+          "source_id": "cibc_smart_fees_01",
+          "quote": "Paperless statements are free. Paper statements cost $2.25 monthly, $0.75 quarterly, or $2.75 monthly with cheque images."
+        }
+      ],
+      "rationale": "Correctly states that paperless statements are free and standard monthly paper statements cost $2.25. The other statement options are outside the narrow question; their omission does not materially change this answer. No safety concern is present."
+    }
+  ],
+  "decision": "tie",
+  "preferred_label": null,
+  "rejected_label": null,
+  "preference_rationale": "All three answers give the same supported fees and adequately answer the question. Differences in placement of monthly and use of however have no practical consequence.",
+  "requires_human_review": false,
+  "review_reasons": []
+}

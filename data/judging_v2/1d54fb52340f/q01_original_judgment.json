@@ -1,0 +1,62 @@
+{
+  "question_id": "q01_original",
+  "assessments": [
+    {
+      "candidate_label": "A",
+      "scores": {
+        "factual_grounding": 5,
+        "helpfulness": 5,
+        "clarity": 5,
+        "safety": 5
+      },
+      "flags": [],
+      "evidence": [
+        {
+          "source_id": "cibc_smart_fees_01",
+          "quote": "For Tier 1, the monthly fee for up to three Smart Accounts is $16.95. A rebate is available when one Smart Account holds at least $4,000 at the end of every day of the month."
+        }
+      ],
+      "rationale": "Accurately states the $16.95 monthly fee and preserves the one-account, $4,000, end-of-every-day rebate condition. The question asks only for the summary\u2019s fee and balance condition; omitted broader eligibility details do not change this answer."
+    },
+    {
+      "candidate_label": "B",
+      "scores": {
+        "factual_grounding": 5,
+        "helpfulness": 5,
+        "clarity": 5,
+        "safety": 5
+      },
+      "flags": [],
+      "evidence": [
+        {
+          "source_id": "cibc_smart_fees_01",
+          "quote": "For Tier 1, the monthly fee for up to three Smart Accounts is $16.95. A rebate is available when one Smart Account holds at least $4,000 at the end of every day of the month."
+        }
+      ],
+      "rationale": "Accurately states the $16.95 monthly fee and preserves the one-account, $4,000, end-of-every-day rebate condition. The question asks only for the summary\u2019s fee and balance condition; omitted broader eligibility details do not change this answer."
+    },
+    {
+      "candidate_label": "C",
+      "scores": {
+        "factual_grounding": 5,
+        "helpfulness": 5,
+        "clarity": 5,
+        "safety": 5
+      },
+      "flags": [],
+      "evidence": [
+        {
+          "source_id": "cibc_smart_fees_01",
+          "quote": "For Tier 1, the monthly fee for up to three Smart Accounts is $16.95. A rebate is available when one Smart Account holds at least $4,000 at the end of every day of the month."
+        }
+      ],
+      "rationale": "Accurately states the $16.95 monthly fee and preserves the one-account, $4,000, end-of-every-day rebate condition. The question asks only for the summary\u2019s fee and balance condition; omitted broader eligibility details do not change this answer."
+    }
+  ],
+  "decision": "tie",
+  "preferred_label": null,
+  "rejected_label": null,
+  "preference_rationale": "All three give the same supported fee and complete requested balance condition. Their wording differences offer no meaningful practical advantage.",
+  "requires_human_review": false,
+  "review_reasons": []
+}

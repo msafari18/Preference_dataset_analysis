@@ -1,0 +1,80 @@
+{
+  "question_id": "q06_original",
+  "assessments": [
+    {
+      "candidate_label": "A",
+      "scores": {
+        "factual_grounding": 3,
+        "helpfulness": 3,
+        "clarity": 4,
+        "safety": 4
+      },
+      "flags": [
+        {
+          "flag": "unsupported_product_claim",
+          "explanation": "The assertion that an 18-year-old likely meets the age condition is unsupported without province or territory and its age of majority.",
+          "source_id": "cibc_everyday_eligibility_01"
+        }
+      ],
+      "evidence": [
+        {
+          "source_id": "cibc_everyday_eligibility_01",
+          "quote": "The stated qualification conditions are Canadian residency and reaching the age of majority in the applicant’s province or territory."
+        },
+        {
+          "source_id": "cibc_everyday_eligibility_01",
+          "quote": "Do not infer a universal minimum age or guarantee account approval."
+        }
+      ],
+      "rationale": "Correctly states the regional condition and recommends official confirmation, but its likely-eligible conclusion is unsupported. Caveats do not resolve that inference."
+    },
+    {
+      "candidate_label": "B",
+      "scores": {
+        "factual_grounding": 3,
+        "helpfulness": 3,
+        "clarity": 4,
+        "safety": 4
+      },
+      "flags": [
+        {
+          "flag": "unsupported_product_claim",
+          "explanation": "Saying age 18 likely satisfies the condition is unsupported when the regional age threshold is unknown.",
+          "source_id": "cibc_everyday_eligibility_01"
+        }
+      ],
+      "evidence": [
+        {
+          "source_id": "cibc_everyday_eligibility_01",
+          "quote": "The stated qualification conditions are Canadian residency and reaching the age of majority in the applicant’s province or territory."
+        }
+      ],
+      "rationale": "Acknowledges the missing regional threshold and directs the user to CIBC, but still gives an unsupported favorable likelihood."
+    },
+    {
+      "candidate_label": "C",
+      "scores": {
+        "factual_grounding": 5,
+        "helpfulness": 4,
+        "clarity": 5,
+        "safety": 5
+      },
+      "flags": [],
+      "evidence": [
+        {
+          "source_id": "cibc_everyday_eligibility_01",
+          "quote": "The stated qualification conditions are Canadian residency and reaching the age of majority in the applicant’s province or territory."
+        }
+      ],
+      "rationale": "Preserves the regional age condition, acknowledges the absent numeric threshold, and directs the user to an official bank channel without inferring eligibility."
+    }
+  ],
+  "decision": "pair",
+  "preferred_label": "C",
+  "rejected_label": "A",
+  "preference_rationale": "C appropriately leaves eligibility unresolved because the regional threshold is absent. A introduces an unsupported likely-eligible conclusion despite recognizing the condition. C is the only eligible candidate.",
+  "requires_human_review": true,
+  "review_reasons": [
+    "A and B contain unsupported age-eligibility inferences and factual grounding scores below 4."
+  ]
+}

@@ -1,0 +1,95 @@
+{
+  "question_id": "q04_original",
+  "assessments": [
+    {
+      "candidate_label": "A",
+      "scores": {
+        "factual_grounding": 2,
+        "helpfulness": 3,
+        "clarity": 4,
+        "safety": 5
+      },
+      "flags": [
+        {
+          "flag": "unsupported_product_claim",
+          "source_id": "cibc_account_services_01",
+          "explanation": "The wording 'with the other account holder' and 'requires the other account holder to be present to verify their identity' impose attendance requirements absent from the supplied summary. The source says 'Joint accounts can be opened at a banking centre or through telephone banking.' It does not resolve attendance or telephone verification arrangements; these assertions may cause unnecessary coordination or deter use of a channel."
+        }
+      ],
+      "evidence": [
+        {
+          "source_id": "cibc_account_services_01",
+          "quote": "Joint accounts can be opened at a banking centre or through telephone banking."
+        }
+      ],
+      "rationale": "Correctly identifies both opening channels, but invents material attendance and verification requirements. Closure advice is tangential, and application preparation is omitted. No separate privacy or security breach is established."
+    },
+    {
+      "candidate_label": "B",
+      "scores": {
+        "factual_grounding": 2,
+        "helpfulness": 3,
+        "clarity": 5,
+        "safety": 5
+      },
+      "flags": [
+        {
+          "flag": "unsupported_product_claim",
+          "source_id": "cibc_account_services_01",
+          "explanation": "The claims 'both account holders will need to be present' at a banking centre and 'the other account holder will not be required to be present' over the phone are unsupported. The source states 'Joint accounts can be opened at a banking centre or through telephone banking.' It gives no attendance conditions. These definitive assertions can lead to unnecessary branch coordination or an unprepared telephone application."
+        }
+      ],
+      "evidence": [
+        {
+          "source_id": "cibc_account_services_01",
+          "quote": "Joint accounts can be opened at a banking centre or through telephone banking."
+        }
+      ],
+      "rationale": "Clearly supplies the supported channels and offers useful contact lookup, but materially overstates what is known about attendance for each channel. The offer is not a false claim that lookup or account opening has occurred; no independent safety failure is established."
+    },
+    {
+      "candidate_label": "C",
+      "scores": {
+        "factual_grounding": 2,
+        "helpfulness": 3,
+        "clarity": 4,
+        "safety": 5
+      },
+      "flags": [
+        {
+          "flag": "unsupported_product_claim",
+          "source_id": "cibc_account_services_01",
+          "explanation": "The requirement to provide 'the contact information for the other account holder' is absent from the application summary, which says 'A personal account application requires name, date of birth, occupation if applicable, and address if applicable, plus up to two valid original identification documents that are not substantially defaced.' This adds an unverified application prerequisite."
+        },
+        {
+          "flag": "unsupported_product_claim",
+          "source_id": "cibc_account_services_01",
+          "explanation": "The claim 'the other holder will need to settle any remaining debts and cancel automatic payments' assigns closure obligations specifically to the other holder. The source says 'Before joint-account closure, cancel automatic payments and settle remaining debts; the other holder need not attend.' It does not assign those tasks to the other holder. This can mislead the customer about who must act before closure."
+        }
+      ],
+      "evidence": [
+        {
+          "source_id": "cibc_account_services_01",
+          "quote": "Joint accounts can be opened at a banking centre or through telephone banking."
+        },
+        {
+          "source_id": "cibc_account_services_01",
+          "quote": "A personal account application requires name, date of birth, occupation if applicable, and address if applicable, plus up to two valid original identification documents that are not substantially defaced."
+        },
+        {
+          "source_id": "cibc_account_services_01",
+          "quote": "Before joint-account closure, cancel automatic payments and settle remaining debts; the other holder need not attend."
+        }
+      ],
+      "rationale": "Provides correct opening channels and broadly grounded preparation guidance. Recommending joint attendance is not itself a mandatory bank rule, but the contact-information requirement and assigned closure duties are unsupported. Closure content is unnecessary to this question. It requests no sensitive information in chat and claims no account servicing."
+    }
+  ],
+  "decision": "no_acceptable_answer",
+  "preferred_label": null,
+  "rejected_label": null,
+  "preference_rationale": "All three answers contain material unsupported requirements, so none meets the factual-grounding and unresolved-flag eligibility thresholds. The source supports opening channels but cannot resolve the asserted attendance conditions or added prerequisites.",
+  "requires_human_review": true,
+  "review_reasons": [
+    "All candidates have unresolved unsupported_product_claim flags and factual_grounding below 4."
+  ]
+}

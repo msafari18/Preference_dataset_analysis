@@ -1,0 +1,11 @@
+{
+  "status": "pass",
+  "question_count": 20,
+  "candidate_count": 60,
+  "errors": [],
+  "warnings": [
+    "q07_paraphrase_c3: token limit reached; requires review for truncation",
+    "q09_paraphrase_c3: token limit reached; requires review for truncation"
+  ],
+  "scope": "Structural validation only; does not establish factual correctness, safety, or preference quality."
+}
