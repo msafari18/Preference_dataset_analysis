@@ -1,6 +1,6 @@
 # Banking preference-data prototype
 
-Generate banking answers, judge them with isolated Codex agents, and prepare preference pairs for human review. **Fine-tuning is proposed, not implemented.**
+Generate banking answers, judge them with isolated Codex agents, and prepare preference pairs for human review.
 
 ## 1. Prepare questions
 
