@@ -1,9 +1,0 @@
-Completed 20 isolated question judges covering 60 answers.
-Answering model: meta-llama/Llama-3.2-3B-Instruct
-Judge model identifier: unavailable
-Decisions: {"tie": 6, "pair": 11, "no_acceptable_answer": 3}
-Validation warnings: 0
-Flagged/requested review cases: 15
-Random audit: 1 of 5 otherwise unflagged cases (20%, rounded up; seed 2026).
-Pending human review: 16 questions, 48 candidate rows.
-All feedback remains provisional. Nothing was marked human-reviewed; no model was trained.

@@ -48,19 +48,19 @@ Open the generated `human_review_queue.json` or CSV. Review flagged cases and th
 
 AI judging and file validation do not establish bank approval. Do not treat pending pairs as finalized training data.
 
-## 5. Saved results and report
+## 5. Saved results
 
-- `artifacts/proposed_pairs_v1.jsonl`: 12 proposed pairs from the reported run.
-- `artifacts/report_examples_v1.json`: saved examples and original judge scores.
+- `artifacts/proposed_pairs_v1.jsonl`: 12 proposed pairs.
+- `artifacts/proposed_pairs_and_results.json`: pairs with scores, evidence, and summary results.
+- `artifacts/report_examples_v1.json`: illustrative answers and judge scores.
 - `banking_full/validation_workspace/data/judging/`: archived judgments, metadata, and review queue.
 
-To rebuild the report (requires LaTeX):
+Regenerate exports from the archived judgments:
 
 ```bash
-pdflatex literature_review.tex
-pdflatex literature_review.tex
+python3 scripts/export_report_artifacts.py
 ```
 
-`scripts/aggregate_completed_judging.py` and `scripts/export_report_artifacts.py` target archived runs. For a new run, the Codex coordinator must use its new manifest and actual execution state, adapting aggregation paths. The exporter overwrites generated report examples; preserve manual edits before running it.
+The saved-run aggregator targets the archived manifest. For new runs, the Codex coordinator must adapt aggregation paths and record actual execution metadata.
 
-Sources are public-page summaries and questions are fictional. The workflow is AI-assisted research material. Repeated model runs may differ; saved judgments reproduce the reported results.
+Sources are public-page summaries and questions are fictional. Labels remain provisional pending human review. Repeated model runs may differ. The report source is maintained separately from this repository.

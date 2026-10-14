@@ -13,3 +13,11 @@ __pycache__/
 .ipynb_checkpoints/
 *.fdb_latexmk
 *.fls
+
+# Local report and alternative experiments
+*.tex
+data/judging_v2/
+artifacts/proposed_pairs_v2.jsonl
+prompts/preference_judge_v2.txt
+scripts/aggregate_judging_v2.py
+scripts/compare_judging_versions.py
